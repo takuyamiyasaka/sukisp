@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   namespace :admins do
+    get 'topicks/index'
+    get 'topicks/show'
+  end
+  get 'topicks/index'
+  get 'topicks/show'
+  namespace :admins do
     get 'genres/index'
   end
 
@@ -27,6 +33,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :genres
+    resources :topicks
+    resources :customers
   end
 
   resources :genres

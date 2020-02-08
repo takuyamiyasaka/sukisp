@@ -1,0 +1,5 @@
+<h1>管理者ジャンル新規作成</h1>
+<%= form_for(@genre) do |f| %>
+	<%=f.text_field :genre_name %>
+	<%= f.submit "追加" %>
+<% end %>
