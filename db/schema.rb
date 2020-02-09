@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_07_093357) do
+ActiveRecord::Schema.define(version: 2020_02_09_080225) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,10 +44,17 @@ ActiveRecord::Schema.define(version: 2020_02_07_093357) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "topick_images", force: :cascade do |t|
+    t.string "topick_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "topick_id"
+    t.index ["topick_id"], name: "index_topick_images_on_topick_id"
+  end
+
   create_table "topicks", force: :cascade do |t|
     t.string "topick_name"
     t.text "introduction"
-    t.string "image_id"
     t.string "topick_status"
     t.integer "genre_id"
     t.integer "customer_id"
