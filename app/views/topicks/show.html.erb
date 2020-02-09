@@ -1,2 +1,12 @@
 <h1>Topicks#show</h1>
 <p>Find me in app/views/topicks/show.html.erb</p>
+<%= @topick.topick_name %>
+<% @topick.topick_images.each do |image| %>
+<%= attachment_image_tag image, :topick_image, :fill, 50,50, format: "jpeg" %>
+<% end %>
+<%= @topick.introduction %>
+
+コメント
+
+
+コメント新規投稿

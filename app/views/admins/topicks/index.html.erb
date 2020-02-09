@@ -1,2 +1,21 @@
-<h1>Admins::Topicks#index</h1>
-<p>Find me in app/views/admins/topicks/index.html.erb</p>
+<h1>話題一覧</h1>
+<% @genres.each do |genre| %>
+<%= genre.genre_name %>
+<table>
+	<thead>
+		<tr>
+			<th>作成日</th>
+			<th>話題</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% genre.topicks.each do |topick|  %>
+		<tr>
+			<td><%=link_to topick.created_at,admins_topick_path(topick) %></td>
+			<td><%= topick.topick_name %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>
+

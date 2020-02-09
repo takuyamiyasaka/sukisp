@@ -23,13 +23,14 @@ Rails.application.routes.draw do
 
   root to: "topicks#top"
 
+
+  resources :customers
   resources :topicks do
-    collection do
-      get "about"
+      collection do
+       get "about"
     end
   end
 
-  resources :customers
 
   namespace :admins do
     resources :genres
