@@ -4,5 +4,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- has_many :topicks, dependent: :destroy
+  has_many :topicks, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  attachment :profile_image
+
 end

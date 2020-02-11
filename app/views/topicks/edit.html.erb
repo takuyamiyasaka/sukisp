@@ -1,2 +1,7 @@
 <h1>Topicks#edit</h1>
 <p>Find me in app/views/topicks/edit.html.erb</p>
+<%= @topick.topick_name %>
+<% @topick.topick_images.each do |image| %>
+<%= attachment_image_tag image,:topick_image, :fill, 50,50, format: "jpeg" %>
+<% end %>
+<%= link_to "消去",topick_path(@topick), method: :delete %>

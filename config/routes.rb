@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admins do
-    get 'topicks/index'
-    get 'topicks/show'
-  end
-  get 'topicks/index'
-  get 'topicks/show'
-  namespace :admins do
-    get 'genres/index'
-  end
+  get "topicks/about" => "topicks#about"
 
   devise_for :admins, controllers:{
   	sessions:       "admins/sessions",
@@ -26,9 +18,7 @@ Rails.application.routes.draw do
 
   resources :customers
   resources :topicks do
-      collection do
-       get "about"
-    end
+    resources :comments
   end
 
 

@@ -5,8 +5,29 @@
 <%= attachment_image_tag image, :topick_image, :fill, 50,50, format: "jpeg" %>
 <% end %>
 <%= @topick.introduction %>
+<% if @topick.customer == current_customer %>
+	<%= link_to "編集する", edit_topick_path(@topick) %>
+	<% else %>
+	<% end %>
 
-コメント
+<div>
+	<% @topick.comments.each do |comment| %>
+	<%= comment.customer.public_name %>
+	<%= attachment_image_tag comment, :image, :fill, 50,50, format: "jpeg" %>
+	<%= comment.comment %>
+	<%= comment.created_at %>
+
+	<% if comment.customer == current_customer %>
+		<%= link_to "削除", topick_comment_path(comment.topick_id, comment.id), method: :delete %>
+		<% end %>
+	<% end %>
+</div>
 
 
-コメント新規投稿
+<div>
+	<%= form_for [@topick, @comment] do |f| %>
+		<%= f.attachment_field :image %>
+		<%= f.text_area :comment %>
+		<%= f.submit "コメント投稿", class:"btn btn-info" %>
+	<% end %>
+</div>
