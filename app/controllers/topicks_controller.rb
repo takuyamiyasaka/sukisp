@@ -24,9 +24,29 @@ class TopicksController < ApplicationController
 
   def show
     @topick = Topick.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
+    @topick = Topick.find(params[:id])
+  end
+
+  def update
+    topick = Topick.find(params[:id])
+    if topick.customer ==current_customer
+        topick.update(topick_params)
+        redirect_to current_customer_path
+    else
+    end
+  end
+
+  def destroy
+    topick = Topick.find(params[:id])
+    if topick.customer == current_customer
+        topick.destroy
+        redirect_to topicks_path
+    else
+    end
   end
 
   private
