@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :relationships
+
 
   namespace :admins do
     resources :genres
