@@ -1,3 +1,17 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
-<%= @cutomer.name %>
+<h1>マイページ</h1>
+<%= attachment_image_tag @customer, :profile_image, :fill,50, 50, format: "jpeg" %>
+<%= @customer.name %>
+<%= @customer.public_name %>
+<h2>投稿した話題</h2>
+	<table class="table">
+		<% @customer.topicks.each do |topick| %>
+		<tr>
+			<td>
+				<%= topick.created_at %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+	<%= link_to "プロフィール編集", edit_customer_path(@customer) %>
+	<%= link_to "話題新規投稿", new_topick_path %>
+	<%= link_to "退会ページ", withdraw_customers_path %>

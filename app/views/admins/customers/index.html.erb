@@ -1,1 +1,25 @@
-kaiinitiran
+<h1>会員一覧</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>会員名</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+		<tbody>
+			<% @customers.each do |customer| %>
+			<tr>
+				<td><%=link_to customer.id, admins_customer_path(customer) %></td>
+				<td><%= customer.name %></td>
+				<td><% if customer.deleted_at.nil?  %>
+					<p>会員</p>
+					<% else %>
+					<p>退会済み</p>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+

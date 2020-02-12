@@ -1,13 +1,20 @@
 class TopicksController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about, :show, :index]
   def top
+    
+    @topick_now = Topick.where(created_at: 0.day.ago.all_day)
   end
 
   def about
   end
 
   def index
-    @topicks = Topick.all
+    if params[:genre_id]
+      genre = Genre.find(params[:genre_id])
+      @topicks = genre.topicks
+    else
+      @topicks = Topick.all
+    end
   end
 
   def new
