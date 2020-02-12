@@ -1,0 +1,16 @@
+<h1>会員詳細</h1>
+<%= @customer.id %>
+<% if @customer.deleted_at.nil? %>
+<span>会員</span>
+<% else %>
+<span>退会済</span>
+<% end %>
+<p>氏名</p>
+<%= attachment_image_tag @customer, :profile_image, :fill,60,60, format: "jpeg" %>
+<%= @customer.name %>
+<%= @customer.public_name %>
+<%= @customer.email %>
+<% @customer.topicks.each do |topick| %>
+	<%= topick.created_at %>
+	<% end %>
+<%= link_to "編集する", edit_admins_customer_path(@customer) %>

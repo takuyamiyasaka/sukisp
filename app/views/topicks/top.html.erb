@@ -1,3 +1,8 @@
-<h1>Topicks#top</h1>
-<p>Find me in app/views/topicks/top.html.erb</p>
- <%= link_to " logout", destroy_customer_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout head_item" %>
+<h1>ようこそ</h1>
+<% @topick_now.each do |topick_today| %>
+	<%= topick_today.created_at %>
+	<% end %>
+
+
+
+

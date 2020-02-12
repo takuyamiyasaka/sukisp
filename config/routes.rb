@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get "topicks/about" => "topicks#about"
-
   devise_for :admins, controllers:{
   	sessions:       "admins/sessions",
   	passwords:      "admins/passwords",
@@ -16,8 +14,15 @@ Rails.application.routes.draw do
   root to: "topicks#top"
 
 
-  resources :customers
+  resources :customers do
+    collection do
+      get "withdraw"
+    end
+  end
   resources :topicks do
+    collection do
+      get "about"
+    end
     resources :comments
   end
 
