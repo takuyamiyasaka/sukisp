@@ -15,3 +15,5 @@
 	<%= link_to "プロフィール編集", edit_customer_path(@customer) %>
 	<%= link_to "話題新規投稿", new_topick_path %>
 	<%= link_to "退会ページ", withdraw_customers_path %>
+
+	<%= render "relationships/follow", customer: @customer %>
