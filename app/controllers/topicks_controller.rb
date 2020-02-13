@@ -1,7 +1,7 @@
 class TopicksController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about, :show, :index]
+
   def top
-    
     @topick_now = Topick.where(created_at: 0.day.ago.all_day)
   end
 
@@ -42,7 +42,7 @@ class TopicksController < ApplicationController
     topick = Topick.find(params[:id])
     if topick.customer ==current_customer
         topick.update(topick_params)
-        redirect_to current_customer_path
+        redirect_to topick_path(topick)
     else
     end
   end
@@ -50,7 +50,8 @@ class TopicksController < ApplicationController
   def destroy
     topick = Topick.find(params[:id])
     if topick.customer == current_customer
-        topick.destroy
+        topick.topick_images.delete_all
+        topick.delete
         redirect_to topicks_path
     else
     end
