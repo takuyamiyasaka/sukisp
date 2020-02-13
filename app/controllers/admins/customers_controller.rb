@@ -2,15 +2,15 @@ class Admins::CustomersController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@customers = Customer.all
+		@customers = Customer.with_deleted
 	end
 
 	def show
-		@customer = Customer.find(params[:id])
+		@customer = Customer.with_deleted.find(params[:id])
 	end
 
 	def edit
-		@customer = Customer.find(params[:id])
+		@customer = Customer.with_deleted.find(params[:id])
 	end
 
 	def update
@@ -18,6 +18,9 @@ class Admins::CustomersController < ApplicationController
 		if params[:customer][:deleted_at] == "true"
 			customer.update(customer_params)
 			customer.restore
+			customer.topicks
+			byebug
+			customer.topicks.topick_images.restore
 			redirect_to admins_customer_path(customer)
 		else
 			customer.update(customer_params)

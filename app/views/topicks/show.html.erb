@@ -1,14 +1,18 @@
 <h1>Topicks#show</h1>
 <p>Find me in app/views/topicks/show.html.erb</p>
-<%= @topick.topick_name %>
+<p>話題名
+<%= @topick.topick_name %></p>
 <% @topick.topick_images.each do |image| %>
 <%= attachment_image_tag image, :topick_image, :fill, 50,50, format: "jpeg" %>
-<% end %>
-<%= @topick.introduction %>
+<% end %><br>
+<p>内容
+<%= @topick.introduction %></p>
 <% if @topick.customer == current_customer %>
-	<%= link_to "編集する", edit_topick_path(@topick) %>
+	<%= link_to "編集する", edit_topick_path(@topick), class:"btn btn-info" %>
 	<% else %>
 	<% end %>
+
+	<h3>コメント一覧</h3>
 
 <div>
 	<% @topick.comments.each do |comment| %>
@@ -23,7 +27,7 @@
 	<% end %>
 </div>
 
-
+<h3>コメント投稿</h3>
 <div>
 	<%= form_for [@topick, @comment] do |f| %>
 		<%= f.attachment_field :image %>
