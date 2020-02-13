@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get "about"
     end
     resources :comments
+    resource  :likes
   end
 
   resources :relationships
