@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_060752) do
+ActiveRecord::Schema.define(version: 2020_02_14_111512) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2020_02_13_060752) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.integer "inquiry_id"
+    t.text "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inquiry_id"], name: "index_answers_on_inquiry_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -55,6 +63,14 @@ ActiveRecord::Schema.define(version: 2020_02_13_060752) do
     t.string "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.integer "customer_id"
+    t.text "request"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_inquiries_on_customer_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -96,6 +112,12 @@ ActiveRecord::Schema.define(version: 2020_02_13_060752) do
     t.time "deleted_at"
     t.index ["customer_id"], name: "index_topicks_on_customer_id"
     t.index ["genre_id"], name: "index_topicks_on_genre_id"
+  end
+
+  create_table "update_contacts", force: :cascade do |t|
+    t.text "contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

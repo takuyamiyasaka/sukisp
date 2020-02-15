@@ -3,6 +3,11 @@
 	<%= topick_today.created_at %>
 	<% end %>
 
+	<h5>管理人から連絡</h5>
+	<% @contacts.each do |contact| %>
+	<%=contact.contact %>
+	<% end %>
+
 
 
 

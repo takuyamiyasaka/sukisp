@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'answers/new'
+  end
+  get 'inquiries/new'
   devise_for :admins, controllers:{
   	sessions:       "admins/sessions",
   	passwords:      "admins/passwords",
@@ -19,6 +23,9 @@ Rails.application.routes.draw do
       get "withdraw"
     end
   end
+
+  resources :inquiries
+
   resources :topicks do
     collection do
       get "about"
@@ -32,8 +39,15 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :genres
-    resources :topicks
+    resources :topicks do
+      collection do
+      get "top"
+    end
+  end
     resources :customers
+    resources :inquiries
+    resources :answers
+    resources :update_contacts
   end
 
   resources :genres

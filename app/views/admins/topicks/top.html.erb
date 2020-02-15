@@ -1,0 +1,8 @@
+<% @inquiries.each do |inquiry| %>
+	<%=link_to inquiry.request, admins_inquiry_path(inquiry)  %>
+	<% end %>
+
+	<%= form_for(@contact,url:admins_update_contacts_path) do |f| %>
+		<%=f.text_area :contact %>
+		<%= f.submit "更新" %>
+		<% end %>
