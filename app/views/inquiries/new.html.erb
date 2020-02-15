@@ -1,0 +1,5 @@
+<h1>問い合わせページ</h1>
+<%= form_for(@inquiry) do |f| %>
+	<%= f.text_field :request %>
+	<%= f.submit "送信", class:"btn btn-info" %>
+<% end %>

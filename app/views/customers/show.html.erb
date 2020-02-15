@@ -17,3 +17,23 @@
 	<%= link_to "退会ページ", withdraw_customers_path %>
 
 	<%= render "relationships/follow", customer: @customer %>
+	<p>管理者からの回答<p>
+		<table>
+			<thead>
+				<tr>
+					<th>問い合わせ内容</th>
+					<th>回答</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @inquiry.each do |inquiry| %>
+				<tr>
+					<td>
+						<%= inquiry.request %>
+					</td>
+					<td>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>

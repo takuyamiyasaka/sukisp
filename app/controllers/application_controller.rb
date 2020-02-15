@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action  :configure_permitted_parameters, if: :devise_controller?
   def after_sign_in_path_for(resource)
   	if admin_signed_in?
-       admins_genres_path
+       top_admins_topicks_path
     else
        root_path
     end

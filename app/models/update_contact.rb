@@ -1,0 +1,2 @@
+class UpdateContact < ApplicationRecord
+end

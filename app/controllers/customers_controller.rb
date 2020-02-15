@@ -2,6 +2,8 @@ class CustomersController < ApplicationController
 	before_action :authenticate_customer!
   def show
   	@customer = Customer.find(params[:id])
+    @inquiry = @customer.inquiries
+    @i = Inquiry.all
   end
 
   def edit

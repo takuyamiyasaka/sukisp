@@ -3,6 +3,7 @@ class TopicksController < ApplicationController
 
   def top
     @topick_now = Topick.where(created_at: 0.day.ago.all_day)
+    @contacts = UpdateContact.all.reverse
   end
 
   def about
