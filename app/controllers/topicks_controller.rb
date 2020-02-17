@@ -1,9 +1,22 @@
 class TopicksController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about, :show, :index]
+  require "open-uri"
+
+
 
   def top
     @topick_now = Topick.where(created_at: 0.day.ago.all_day)
     @contacts = UpdateContact.all.reverse
+    country = params.dig(:search, :country) || 'jp'
+    url = "https://newsapi.org/v2/top-headlines?country=#{country}&apiKey="+ ENV['API']
+    req = open(url)
+    @response = JSON.parse req.read
+    category = params.dig(:search, :category)
+    url = 'https://newsapi.org/v2/sources?apiKey='+ ENV['API']
+    reqi = open(url)
+    @source = JSON.parse reqi.read
+
+    @source = @source['sources'].select { |s| s["category"] == category } if category.present?
   end
 
   def about
