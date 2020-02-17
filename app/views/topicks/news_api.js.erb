@@ -1,0 +1,13 @@
+$(function(){
+	$(".news").ajex({
+
+		url: 'https://newsapi.org/v2/top-headlines?'+'country=us&'+'apiKey=a478791b4bb34be1ad77c132b3ae16c8',
+		dataType : "jsonp",
+
+	}).done(function (data){
+		$(".title").text(data.title);
+
+	}).fail(function (data){
+
+	});
+});

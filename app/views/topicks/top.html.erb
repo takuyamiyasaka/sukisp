@@ -1,4 +1,10 @@
 <h1>ようこそ</h1>
+
+
+<div>
+	
+</div>
+
 <% @topick_now.each do |topick_today| %>
 	<%= topick_today.created_at %>
 	<% end %>
@@ -10,4 +16,27 @@
 
 
 
+<h1>ニュース</h1>
+<div class="row">
+	<%= form_tag(root_path, method: :get) do %>
+		<%= select_tag "search[country]",options_for_select({"アメリカ"=>"us","日本"=>"jp"}) %>
+		<%= submit_tag "検索" %>
+		<% end %>
+		<%= form_tag(root_path, method: :get) do %>
+		<%= select_tag "search[category]",options_for_select({"一般"=>"general","エンターテイメント"=>"entertainment","ビジネス"=>"business","健康"=>"health","サイエンス"=>"science","スポーツ"=>"sports","テクノロジー"=>"technology" }) %>
+		<%= submit_tag "検索" %>
+		<% end %>
 
+	<% @response["articles"].first(9).shuffle.each do |a| %>
+	<div class="col-xs-4">
+	  <div class="box border">
+	  	<%= image_tag a["urlToImage"], :size => "180x110"%><br>
+	  	<%= link_to a["url"] do %>
+	  	<%= a["title"]  %>
+	  <% end %><br>
+	  <%= a["publishedAt"] %>
+	</div>
+</div>
+	<% end %>
+</div>
+<%= @source %>
