@@ -1,7 +1,7 @@
 class TopicksController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about, :show, :index]
   require "open-uri"
-
+  impressionist :actions=>[:show]
 
 
   def top
@@ -17,6 +17,8 @@ class TopicksController < ApplicationController
     @source = JSON.parse reqi.read
 
     @source = @source['sources'].select { |s| s["category"] == category } if category.present?
+    @recently_topicks = Topick.order("created_at desc")
+    @top_topicks = Topick.find(Like.group(:topick_id).order("count(topick_id) desc").limit(3).pluck(:topick_id))
   end
 
   def about
@@ -26,6 +28,9 @@ class TopicksController < ApplicationController
     if params[:genre_id]
       genre = Genre.find(params[:genre_id])
       @topicks = genre.topicks
+    elsif params[:customer_id]
+      customer = Customer.find(params[:customer_id])
+      @topicks = customer.topicks
     else
       @topicks = Topick.all
     end
@@ -46,6 +51,7 @@ class TopicksController < ApplicationController
   def show
     @topick = Topick.find(params[:id])
     @comment = Comment.new
+    impressionist(@topick)
   end
 
   def edit

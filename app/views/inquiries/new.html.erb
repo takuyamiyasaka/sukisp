@@ -1,5 +1,8 @@
-<h1>問い合わせページ</h1>
-<%= form_for(@inquiry) do |f| %>
-	<%= f.text_field :request %>
-	<%= f.submit "送信", class:"btn btn-info" %>
-<% end %>
+<div class="text-center">
+	<h1 style="color:  #01b8be">問い合わせページ</h1>
+	<%= form_for(@inquiry) do |f| %>
+		<%= f.text_area :request ,:placeholder =>"問い合わせ内容を記述してください",size: "50x5" %><br>
+		<%= f.hidden_field :unsolved %>
+		<%= f.submit "送信", class:"btn btn-info" %>
+	<% end %>
+</div>

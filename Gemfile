@@ -67,6 +67,9 @@ gem "refile", require: "refile/rails", github: "manfe/refile"
 gem "refile-mini_magick"
 gem "paranoia"
 gem "dotenv-rails"
+gem "impressionist"
+gem 'letter_opener'
+gem 'letter_opener_web'
 
 group :production do
   gem "mysql2"

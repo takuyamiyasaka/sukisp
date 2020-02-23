@@ -15,7 +15,150 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+html{
+	min-height:100%;
+	position:relative;
+}
+body{
+	margin-top: 100px;
+	height:100%;
+	margin-bottom:5em;
+}
+footer {
+	height:5em;
+	bottom:0;
+	width:100%;
+	margin-top:5px;
+	position:absolute;
 
-.body{
-	margin-top: 60px;
+}
+.wrapper {
+	position:relative;
+	width:100%;
+	height:auto !important;
+	height:100%;
+	min-height:100%;
+}
+
+.actions {
+	margin-top:10px;
+	margin-bottom:5px;
+}
+
+.login {
+	margin-top:100px;
+}
+.header-top {
+	background-image: url(img/main.jfif);
+	background-size:covar;
+}
+
+.main-visual {
+  width: 100%;
+  height: 300px;
+  background-image: url(img/jpan2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.main-top {
+	height: 400px;
+	width:100%;
+	background-image: url(img/main1.jpg);
+	background-size: cover;
+	background-position: relative;
+	margin-bottom:30px;
+}
+.news {
+	height: 300px;
+	width: 100%;
+	border:2px solid #000;
+}
+
+.news-line {
+	background-image: url(img/main2.jfif);
+	background-size:cover;
+}
+.box {
+	margin-top:10px;
+}
+#slideshow {
+   position: relative;
+   width:  640px; /* 画像の横幅に合わせて記述 */
+   height: 270px; /* 画像の高さに合わせて記述 */
+}
+#slideshow img {
+   position: absolute;
+   top: 0;
+   left:0;
+   z-index: 8;
+   opacity: 0.0;
+}
+#slideshow img.active {
+   z-index: 10;
+   opacity: 1.0;
+}
+#slideshow img.last-active {
+   z-index: 9;
+}
+.image1 {
+background-image: url(image1.jpg);
+}
+.image2 {
+background-image: url(image2.jpg);
+}
+.image3 {
+background-image: url(image3.jpg);
+}
+.image4 {
+background-image: url(image4.jpg);
+}
+
+.toph1 {
+	padding:10px 0 0 10px;
+}
+
+.admin-contact {
+	border: solid #7fffd4;
+	border-top-width: 5px;
+	border-bottom-width: 5px;
+	padding: 10px;
+	margin-bottom:20px;
+}
+.top-topick {
+}
+
+.mini-genre{
+	margin-left:200px;
+}
+
+.topick-box {
+	border-bottom: 2px solid #000;
+
+}
+
+.topick-index {
+	border-bottom:10px solid #7fffd4;
+}
+
+
+.genre-mini {
+	width: 40px;
+	padding:0 5px 0;
+}
+
+.comment-box {
+	border:1px solid #000;
+}
+
+.comment-name {
+	border-bottom:1px solid #000;
+}
+
+.edit-customer {
+	padding-right:70px;
+}
+
+.withdraw {
+	margin-top:80px;
 }

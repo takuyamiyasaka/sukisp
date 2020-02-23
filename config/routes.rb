@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     collection do
       get "withdraw"
     end
+      member do
+        get "follow"
+        get "follower"
+      end
   end
 
   resources :inquiries
@@ -35,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships
+    resources :genres
 
 
   namespace :admins do
@@ -42,14 +47,17 @@ Rails.application.routes.draw do
     resources :topicks do
       collection do
       get "top"
+      end
     end
-  end
     resources :customers
     resources :inquiries
     resources :answers
     resources :update_contacts
   end
+  if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 
-  resources :genres
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

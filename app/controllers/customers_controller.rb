@@ -25,8 +25,17 @@ class CustomersController < ApplicationController
   	redirect_to root_path
   end
 
+  def follow
+    customer = Customer.find(params[:id])
+    @customers = customer.followings.all
+  end
+  def follower
+    customer = Customer.find(params[:id])
+    @customers = customer.followers.all
+  end
+
   private
   def customer_params
-  	params.require(:customer).permit(:profile_image, :name, :public_name)
+  	params.require(:customer).permit(:profile_image, :name, :public_name,:self_introduction)
   end
 end

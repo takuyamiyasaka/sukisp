@@ -1,12 +1,16 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top header-top" style="background-color:#fafafa ">
 	<div class="container">
-		<nav class="nav navbar-nav nabbar-right">
-			<span><%=link_to "SukiSp",root_path %></span>
-		</nav>
-	  	<nav>
-			<ul class="nav navbar-nav navbar-right">
+		<div class="text-center">
+			<% if admin_signed_in? %>
+				<h4><%=link_to "SukiSp",top_admins_topicks_path %></h4>
+				<% else %>
+				<h4><%=link_to "SukiSp",root_path %></h4>
+				<% end %>
+		</div>
+  		<nav>
+				<ul class="nav navb-tabs nav-justified ">
 				<% if admin_signed_in? %>
-					<li><%= link_to "ジャンル", admins_genres_path %></li>
+					<li><%= link_to "ジャンル一覧", admins_genres_path %></li>
 					<li><%= link_to "話題一覧", admins_topicks_path %></li>
 					<li><%= link_to "会員一覧",admins_customers_path %></li>
 					<li><%= link_to "ログアウト",destroy_admin_session_path,method: :delete %></li>
@@ -22,11 +26,20 @@
 					</li>
 					<li><%= link_to "話題", topicks_path %>
 					</li>
-					<li><%= link_to "ログイン　新規登録", new_customer_session_path %>
+					<li><%= link_to "ログイン | 新規登録", new_customer_session_path %>
 					</li>
 					<li><%= link_to "アバウトページ",about_topicks_path %> </li>
 				<% end %>
 			</ul>
 		</nav>
+		<div class="text-right">
+			<% if customer_signed_in? %>
+				<span>ニックネーム：<%= current_customer.public_name %></span>
+			<% else %>
+					<span>こんにちは</span>
+			<% end %>
+		</div>
 	</div>
+</div>
+</div>
 </header>

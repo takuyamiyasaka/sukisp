@@ -1,5 +1,13 @@
-<h1>話題一覧</h1>
+<div class="text-center topick-index">
+	<h1 style="color: #01b8be">話題一覧</h1>
+	<div class="text-right">
+	<p>現在の話題は<%= @topicks.count %>です。</p>
+</div>
+</div>
+
+
 <%= link_to "新規話題投稿", new_topick_path %>
+	<!--
 	<table class="table table-bordered">
 		<thead>
 			<tr>
@@ -19,4 +27,24 @@
 			<% end %>
 		</tbody>
 	</thead>
-</table>
+</table> -->
+<div class="col-xs-12">
+	<div class="row">
+<% @topicks.each do |topicks| %>
+	<div class="col-xs-6">
+	<div class="topick-box">
+		<% topicks.topick_images.first(1).each do |image| %><br>
+			<%= attachment_image_tag image , :topick_image, :fill,560,150, class: "pull-left profile-thumb",fallback:"no_image.png" %><br>
+		<% end %><br>
+		<span class="genre-mini" style="background-color: #7fffd4 "><%= topicks.genre.genre_name %></span>
+		<span>投稿者  <%=link_to topicks.customer.public_name,customer_path(topicks) %></span><br>
+		<%=link_to topicks.topick_name, topick_path(topicks) %> <br>
+		<%=link_to topicks.created_at.to_s(:datetime_jp),topick_path(topicks) %>
+		<span><%= topicks.likes.count %>いいね</span>
+		<span><%= topicks.comments.count %>コメント</span>
+		<span>閲覧数:<%= topicks.impressionist_count %>
+	</div>
+</div>
+<% end %>
+</div>
+

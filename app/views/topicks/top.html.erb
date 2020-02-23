@@ -1,22 +1,73 @@
-<h1>ようこそ</h1>
-
-
-<div>
-	
-</div>
-
-<% @topick_now.each do |topick_today| %>
-	<%= topick_today.created_at %>
-	<% end %>
-
-	<h5>管理人から連絡</h5>
-	<% @contacts.each do |contact| %>
-	<%=contact.contact %>
-	<% end %>
-
-
-
-<h1>ニュース</h1>
+<div class="main-top">
+	<%#<%= image_tag "img/main1.jpg", class:"active"
+	<%= image_tag "img/main2.jpg" %
+	<%= image_tag "img/main3.jpg" %
+	<%= image_tag "img/main4.jpg" %>
+	<h1 class="toph1">ようこそ</h1>
+	<h4 class="toph1">あなただけのお話聞かせてくれませんか？</h4>
+	<h3 class="toph1">SukiSpはあなたのお話を待っています。</h3>
+	</div>
+	<div class="image">
+	</div>
+	<div class="row">
+		<div class="col-xs-offset-2 col-xs-8">
+			<div class="admin-contact">
+				<p style="text-decoration: underline">運営からのお知らせ</p>
+			<table class="table"style="overflow-y: auto ">
+				<% @contacts.each do |contact| %>
+				<tr>
+					<td>
+						<%= contact.created_at.to_s(:datetime_jp) %>
+					</td>
+					<td>
+						<%= contact.contact %>
+					</td>
+			<% end %>
+				</tr>
+			</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+		<div class="recently-topick well text-center"style="background-color: #00bfff">
+			<p class="btn-warning">
+			人気記事</p>
+			<table>
+				<tbody>
+					<% @top_topicks.each do |top| %>
+					<tr>
+						<td>
+							<p style="text-decoration: underline;"><%= link_to top.topick_name, topick_path(top) %></p>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<span style="color: yellow"><%= link_to "その他の話題はこちらへ",topicks_path %></span>
+		</div>
+	</div>
+	<div class="col-xs-6">
+		<div class="day-topiick well text-center"style="background-color: #F9F790">
+			<p class="btn-info">最近の話題</p>
+			<table style="overflow-y: auto ">
+				<tbody>
+					<% @recently_topicks.first(5).each do |recently| %>
+					<tr>
+						<td>
+							<p style="text-decoration: underline;"><%= link_to recently.topick_name, topick_path(recently) %></p>
+						</td>
+					</tr>
+					<% end %>
+			</table>
+			<%= link_to "その他の話題はこちらへ",topicks_path %>
+		</div>
+	</div>
+		<div class="main text-center" style="background-color:#7fffd4">
+			<%= link_to "話題を投稿しましょう。",new_topick_path %>
+		</div>
+<div class="well text-center news-line" >
+<h1>話題のニュース</h1>
 <div class="row">
 	<%= form_tag(root_path, method: :get) do %>
 		<%= select_tag "search[country]",options_for_select({"アメリカ"=>"us","日本"=>"jp"}) %>
@@ -26,17 +77,18 @@
 		<%= select_tag "search[category]",options_for_select({"一般"=>"general","エンターテイメント"=>"entertainment","ビジネス"=>"business","健康"=>"health","サイエンス"=>"science","スポーツ"=>"sports","テクノロジー"=>"technology" }) %>
 		<%= submit_tag "検索" %>
 		<% end %>
-
-	<% @response["articles"].first(9).shuffle.each do |a| %>
-	<div class="col-xs-4">
-	  <div class="box border">
-	  	<%= image_tag a["urlToImage"], :size => "180x110"%><br>
+<div class="news" style="overflow-y: auto ">
+	<% @response["articles"].shuffle.each do |a| %>
+	<div class="col-xs-6">
+	  <div class="box">
+	  	<%= image_tag a["urlToImage"], :size => "180x110",fallback:"no image.png",size:"180x110"%><br>
 	  	<%= link_to a["url"] do %>
-	  	<%= a["title"]  %>
+	  	<%= a["title"].truncate(45)  %>
 	  <% end %><br>
 	  <%= a["publishedAt"] %>
 	</div>
 </div>
 	<% end %>
 </div>
-<%= @source %>
+</div>
+</div>
