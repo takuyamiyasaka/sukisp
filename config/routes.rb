@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root to: "topicks#top"
 
 
-  resources :customers do
+  resources :customers  ,only:[:show,:edit,:update,:destroy] do
     collection do
       get "withdraw"
     end
@@ -28,31 +28,31 @@ Rails.application.routes.draw do
       end
   end
 
-  resources :inquiries
+  resources :inquiries ,only: [:new, :create]
 
   resources :topicks do
     collection do
       get "about"
     end
-    resources :comments
-    resource  :likes
+    resources :comments ,only: [:create, :destroy]
+    resource  :likes, only: [:create, :destroy]
   end
 
-  resources :relationships
-    resources :genres
+  resources :relationships ,only: [:create, :destroy]
+  resources :genres ,only: [:index, :show]
 
 
   namespace :admins do
-    resources :genres
-    resources :topicks do
+    resources :genres ,only:[:index, :create,:update]
+    resources :topicks, only: [:index,:show] do
       collection do
       get "top"
       end
     end
-    resources :customers
-    resources :inquiries
-    resources :answers
-    resources :update_contacts
+    resources :customers,only: [:index,:show,:edit,:update]
+    resources :inquiries ,only:[:show,:edit,:index,:update]
+    resources :answers, only:[:create]
+    resources :update_contacts ,only: [:create]
   end
   if Rails.env.development?
   mount LetterOpenerWeb::Engine, at: '/letter_opener'
