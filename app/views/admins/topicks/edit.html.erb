@@ -1,0 +1,16 @@
+<div class="text-center well" style="background-color: #fff">
+	<h1>話題編集</h1>
+			<%= form_for(@topick,url:admins_topick_path(@topick))  do |f| %>
+	<div class="row">
+		<div class="col-xs-6 text-right">
+			<p>ジャンルを選択:     <%= f.collection_select(:genre_id, Genre.where(is_valid: true), :id, :genre_name) %></p>
+			<p>話題名:<%= f.text_field :topick_name %></p>
+			<p>内容:<%= f.text_area :introduction %></p>
+		</div>
+		<div class="col-xs-6">
+			<p><%= f.attachment_field :topick_images_topick_images, multiple: true %></p>
+				<%= f.submit "編集する" %>
+				<% end %>
+		</div>
+	</div>
+</div>
