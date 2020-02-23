@@ -1,21 +1,23 @@
 <h1>話題一覧</h1>
-<% @genres.each do |genre| %>
-<%= genre.genre_name %>
-<table>
+<table class="table table-bordered">
 	<thead>
 		<tr>
 			<th>作成日</th>
+			<th>投稿者</th>
+			<th>ジャンル</th>
 			<th>話題</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% genre.topicks.each do |topick|  %>
+		<% @topick.each do |topick| %>
 		<tr>
-			<td><%=link_to topick.created_at,admins_topick_path(topick) %></td>
-			<td><%= topick.topick_name %></td>
+			<td><%= topick.created_at.to_s(:datetime_jp) %></td>
+			<td><%= link_to topick.customer.name ,admins_customer_path(topick.customer.id)%></td>
+			<td><%= topick.genre.genre_name %></td>
+			<td><%=link_to topick.topick_name,admins_topick_path(topick) %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
-<% end %>
+
 

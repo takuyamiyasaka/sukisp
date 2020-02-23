@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :genres ,only:[:index, :create,:update,:edit]
-    resources :topicks, only: [:index,:show] do
+    resources :topicks, only: [:index,:show,:edit,:update,:destroy] do
       collection do
       get "top"
       end
