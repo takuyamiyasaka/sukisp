@@ -39,11 +39,11 @@ Rails.application.routes.draw do
   end
 
   resources :relationships ,only: [:create, :destroy]
-  resources :genres ,only: [:index, :show,:edit]
+  resources :genres ,only: [:index, :show]
 
 
   namespace :admins do
-    resources :genres ,only:[:index, :create,:update]
+    resources :genres ,only:[:index, :create,:update,:edit]
     resources :topicks, only: [:index,:show] do
       collection do
       get "top"
