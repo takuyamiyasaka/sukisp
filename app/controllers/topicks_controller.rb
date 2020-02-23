@@ -8,15 +8,10 @@ class TopicksController < ApplicationController
     @topick_now = Topick.where(created_at: 0.day.ago.all_day)
     @contacts = UpdateContact.all.reverse
     country = params.dig(:search, :country) || 'jp'
-    url = "https://newsapi.org/v2/top-headlines?country=#{country}&apiKey="+ ENV['API']
+    url = "https://newsapi.org/v2/top-headlines?country=#{country}&apiKey="+ENV['API']
     req = open(url)
     @response = JSON.parse req.read
-    category = params.dig(:search, :category)
-    url = 'https://newsapi.org/v2/sources?apiKey='+ ENV['API']
-    reqi = open(url)
-    @source = JSON.parse reqi.read
 
-    @source = @source['sources'].select { |s| s["category"] == category } if category.present?
     @recently_topicks = Topick.order("created_at desc")
     @top_topicks = Topick.find(Like.group(:topick_id).order("count(topick_id) desc").limit(3).pluck(:topick_id))
   end

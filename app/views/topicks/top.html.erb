@@ -73,10 +73,6 @@
 		<%= select_tag "search[country]",options_for_select({"アメリカ"=>"us","日本"=>"jp"}) %>
 		<%= submit_tag "検索" %>
 		<% end %>
-		<%= form_tag(root_path, method: :get) do %>
-		<%= select_tag "search[category]",options_for_select({"一般"=>"general","エンターテイメント"=>"entertainment","ビジネス"=>"business","健康"=>"health","サイエンス"=>"science","スポーツ"=>"sports","テクノロジー"=>"technology" }) %>
-		<%= submit_tag "検索" %>
-		<% end %>
 <div class="news" style="overflow-y: auto ">
 	<% @response["articles"].shuffle.each do |a| %>
 	<div class="col-xs-6">
