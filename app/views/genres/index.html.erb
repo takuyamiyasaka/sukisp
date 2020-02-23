@@ -1,9 +1,14 @@
-<h1>ジャンル一覧</h1>
-<table class="table table-bordered">
+<div class="text-center">
+	<h1 style="color:#01b8be">ジャンル一覧</h1>
+</div>
+<div class="text-right">
+	<p>現在のジャンルは<%= @genres.count %>です。</p>
+</div>
+<table class="table table-bordered text-center">
 	<thead>
 		<tr>
-			<th>ジャンル</th>
-			<th>話題数</th>
+			<th class="text-center">ジャンル</th>
+			<th class="text-center">話題数</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -15,3 +20,8 @@
 		<% end %>
 	</tbody>
 </table>
+	<p>運営からのお願い<br>ジャンルが足りないと思ったら是非お問い合わせ下さい</p>
+<!-- <div class="main-visual">
+	<%= image_tag "img/japan2.jpg" %>
+</div>
+ -->

@@ -43,7 +43,9 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' } # 追加
+config.action_mailer.delivery_method = :letter_opener_web # 追加
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

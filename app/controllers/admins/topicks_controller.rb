@@ -4,11 +4,11 @@ class Admins::TopicksController < ApplicationController
   end
 
   def top
-  	@inquiries = Inquiry.all
+  	@inquiries = Inquiry.where(unsolved: true)
   	@contact = UpdateContact.new
   end
 
   def show
-  	@topick = Topick.finde(params[:id])
+  	@topick = Topick.find(params[:id])
   end
 end

@@ -1,13 +1,17 @@
-<h1>話題新規作成</h1>
-
-<%= form_for @topick, url: topicks_path  do |f| %>
-	<%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %><br>
-	<%= f.attachment_field :topick_images_topick_images, multiple: true %>
-	<%= f.label :題名 %>
-	<%= f.text_field :topick_name %><br>
-	<%= f.label :内容 %>
-	<%= f.text_area :introduction %><br>
-	<%= f.submit "投稿" %>
-<% end %>
-<div id="result">
+<div class="text-center well" style="background-color: #fff">
+<h1 style="color: #01b8be">話題新規作成</h1>
+	<%= form_for @topick, url: topicks_path  do |f|  %>
+	<div class="row">
+		<div class="col-xs-6 text-right">
+			<p>ジャンルを選択:     <%= f.collection_select(:genre_id, Genre.where(is_valid: true), :id, :genre_name) %></p>
+		<p>話題名:<%= f.text_field :topick_name %></p>
+		<p>内容:<%= f.text_area :introduction %></p>
 	</div>
+	<div class="col-xs-6">
+			<p><%= f.attachment_field :topick_images_topick_images, multiple: true %></p>
+<%= f.submit "登録" %>
+		<% end %>
+	</div>
+	</div>
+</div>
+

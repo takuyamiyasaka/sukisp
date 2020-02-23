@@ -7,3 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create(email: "sukisp@co.jp", password:"sukisuki")
+Genre.create(genre_name: "スポーツ")
+Genre.create(genre_name: "芸能")
+Genre.create(genre_name: "日常")
+Genre.create(genre_name: "食事")
+Genre.create(genre_name: "時事")

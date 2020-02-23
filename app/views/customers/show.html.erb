@@ -1,8 +1,20 @@
+<div class="text-center">
 <h1>マイページ</h1>
-<%= attachment_image_tag @customer, :profile_image, :fill,50, 50, format: "jpeg" %>
-<%= @customer.name %>
-<%= @customer.public_name %>
-<h2>投稿した話題</h2>
+</div>
+<div class="text-center">
+		<%= attachment_image_tag @customer, :profile_image, :fill,250, 150, format: "jpeg" %><br>
+<span>名前:<%= @customer.name %></span><br>
+<span>ニックネーム:<%= @customer.public_name %></span>
+<p>自己紹介</p>
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-2">
+<div class="well"><%=@customer.self_introduction %></div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-6 text-center">
+<h4 >投稿した話題</h4>
 	<table class="table">
 		<% @customer.topicks.each do |topick| %>
 		<tr>
@@ -12,13 +24,42 @@
 		</tr>
 		<% end %>
 	</table>
-	<%= link_to "プロフィール編集", edit_customer_path(@customer) %>
-	<%= link_to "話題新規投稿", new_topick_path %>
-	<%= link_to "退会ページ", withdraw_customers_path %>
+</div>
+	<div class="col-xs-6">
+		<h4 style="color: #fff">l</h4>
+		<table class="table">
+			<tr>
+			</tr>
+			<tr>
+				<th>
+					フォロー
+				</th>
+				<td>
+					<%=link_to @customer.followings.count, follow_customer_path(@customer)%>
+				</td>
+			</tr>
+				<tr>
+					<th>
+						フォロワー
+					</th>
+					<td>
+						<%=link_to @customer.followers.count, follower_customer_path(@customer) %>
+				</tr>
+			</table>
+		</div>
+		<div class="row">
+	<div class="text-center well">
+		<span class="btn btn-info"><%= link_to "プロフィール編集", edit_customer_path(@customer) %></span>
+	<span class="btn btn-warning"><%= link_to "話題新規投稿", new_topick_path %></span>
+	<span class="btn btn-danger"><%= link_to "退会ページ", withdraw_customers_path %>
+	</span>
+</div>
 
-	<%= render "relationships/follow", customer: @customer %>
-	<p>管理者からの回答<p>
-		<table>
+</div>
+<div class="text-center"><%= render "relationships/follow", customer: @customer %></div>
+<% if current_customer == @customer %>
+	<p>管理者からの回答</p>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>問い合わせ内容</th>
@@ -37,3 +78,4 @@
 				<% end %>
 			</tbody>
 		</table>
+		<% end %>

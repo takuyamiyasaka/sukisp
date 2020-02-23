@@ -1,0 +1,7 @@
+<%= form_for(@inquiry,url:"/admins/inquiries/#{@inquiry.id}",method: :patch) do |e| %>
+<%= e.radio_button :unsolved ,false %>
+<%= label_tag :unsolved, "解決" %>
+<%= e.radio_button :unsolved ,true %>
+<%= label_tag :unsolved, "未解決" %>
+<%= e.submit "変更" %>
+<% end %>

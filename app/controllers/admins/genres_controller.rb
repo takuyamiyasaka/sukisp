@@ -9,6 +9,7 @@ class Admins::GenresController < ApplicationController
   end
 
   def edit
+    @genre = Genre.find(params[:id])
   end
 
   def create
@@ -17,7 +18,17 @@ class Admins::GenresController < ApplicationController
   	redirect_to admins_genres_path
   end
 
-  def destory
+  def update
+    genre = Genre.find(params[:id])
+    if params[:genre][:is_valid] == "true"
+    genre.is_valid = true
+    genre.update(genre_params)
+    redirect_to admins_genres_path
+   else
+    genre.is_valid = false
+    genre.update(genre_params)
+    redirect_to admins_genres_path
+   end
   end
 
   private

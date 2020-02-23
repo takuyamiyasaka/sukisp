@@ -14,6 +14,6 @@ class InquiriesController < ApplicationController
 
   private
   def inquiry_params
-  	params.require(:inquiry).permit(:request)
+  	params.require(:inquiry).permit(:request,:unsloved)
   end
 end
