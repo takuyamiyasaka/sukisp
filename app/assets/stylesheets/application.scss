@@ -22,10 +22,10 @@ html{
 body{
 	margin-top: 100px;
 	height:100%;
-	margin-bottom:5em;
+	margin-bottom:6em;
 }
 footer {
-	height:5em;
+	height:6em;
 	bottom:0;
 	width:100%;
 	margin-top:5px;
@@ -49,14 +49,14 @@ footer {
 	margin-top:100px;
 }
 .header-top {
-	background-image: url(img/main.jfif);
+	background-image: image-url("img/main.jfif");
 	background-size:covar;
 }
 
 .main-visual {
   width: 100%;
   height: 300px;
-  background-image: url(img/jpan2.jpg);
+  background-image: image-url("img/jpan2.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -64,9 +64,9 @@ footer {
 .main-top {
 	height: 400px;
 	width:100%;
-	background-image: url(img/main1.jpg);
+	background-image: image-url("img/main1.jpg");
 	background-size: cover;
-	background-position: relative;
+	background-position: center;
 	margin-bottom:30px;
 }
 .news {
@@ -76,7 +76,7 @@ footer {
 }
 
 .news-line {
-	background-image: url(img/main2.jfif);
+	background-image: image-url("img/main2.jfif");
 	background-size:cover;
 }
 .box {
@@ -102,16 +102,16 @@ footer {
    z-index: 9;
 }
 .image1 {
-background-image: url(image1.jpg);
+background-image: image-url("/img/image1.jpg");
 }
 .image2 {
-background-image: url(image2.jpg);
+background-image: image-url("/img/image2.jpg");
 }
 .image3 {
-background-image: url(image3.jpg);
+background-image: image-url("/img/image3.jpg");
 }
 .image4 {
-background-image: url(image4.jpg);
+background-image: image-url("/img/image4.jpg");
 }
 
 .toph1 {

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships ,only: [:create, :destroy]
-  resources :genres ,only: [:index, :show]
+  resources :genres ,only: [:index, :show,:edit]
 
 
   namespace :admins do
