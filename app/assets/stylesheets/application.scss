@@ -89,6 +89,10 @@ footer {
 	width: 100%;
 	border:2px solid #7fffd4;
 }
+.about-image {
+	background-image: image-url("img/lake.jpg");
+	background-size:cover;
+}
 
 .news-line {
 	background-image: image-url("img/main2.jfif");
