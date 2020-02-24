@@ -2,9 +2,14 @@
 	<div class="container">
 		<div class="text-center">
 			<% if admin_signed_in? %>
-				<h4><%=link_to "SukiSp",top_admins_topicks_path %></h4>
+				<h4><%=link_to top_admins_topicks_path do %>
+					<%= image_tag "img/sukisplogo.png",:size =>"160x50" %>
+					<% end %>
+				</h4>
 				<% else %>
-				<h4><%=link_to "SukiSp",root_path %></h4>
+				<h4><%=link_to root_path do %>
+					<%= image_tag "img/sukisplogo.png",:size =>"160x50" %>
+					<% end %></h4>
 				<% end %>
 		</div>
   		<nav>
@@ -22,7 +27,7 @@
 					<li><%= link_to "ログアウト",destroy_customer_session_path, method: :delete %>
 					</li>
 					<% else %>
-					<li><%= link_to "ジャンル", genres_path %>
+					<li class="toph1"><%= link_to "ジャンル", genres_path %>
 					</li>
 					<li><%= link_to "話題", topicks_path %>
 					</li>
@@ -34,9 +39,9 @@
 		</nav>
 		<div class="text-right">
 			<% if customer_signed_in? %>
-				<span>ニックネーム：<%= current_customer.public_name %></span>
+				<span>ログインしています。ニックネーム：<%= current_customer.public_name %></span>
 			<% else %>
-					<span>こんにちは</span>
+					<span></span>
 			<% end %>
 		</div>
 	</div>

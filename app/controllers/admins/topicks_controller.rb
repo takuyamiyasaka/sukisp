@@ -1,4 +1,5 @@
 class Admins::TopicksController < ApplicationController
+  before_action :authenticate_admin!
   def index
   	@topick = Topick.all
   end

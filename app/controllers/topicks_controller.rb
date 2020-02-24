@@ -22,12 +22,12 @@ class TopicksController < ApplicationController
   def index
     if params[:genre_id]
       genre = Genre.find(params[:genre_id])
-      @topicks = genre.topicks
+      @topicks = genre.topicks.page(params[:page])
     elsif params[:customer_id]
       customer = Customer.find(params[:customer_id])
-      @topicks = customer.topicks
+      @topicks = customer.topicks.page(params[:page])
     else
-      @topicks = Topick.all
+      @topicks = Topick.page(params[:page])
     end
   end
 

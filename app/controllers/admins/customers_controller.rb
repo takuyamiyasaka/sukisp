@@ -18,9 +18,6 @@ class Admins::CustomersController < ApplicationController
 		if params[:customer][:deleted_at] == "true"
 			customer.update(customer_params)
 			customer.restore
-			customer.topicks
-			byebug
-			customer.topicks.topick_images.restore
 			redirect_to admins_customer_path(customer)
 		else
 			customer.update(customer_params)

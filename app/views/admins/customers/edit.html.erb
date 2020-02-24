@@ -1,8 +1,20 @@
 <h1>会員編集画面</h1>
+	<div class="row">
+		<div class="col-xs-8 well">
 	<%= form_for(@customer,url:admins_customer_path(@customer)) do |f| %>
-		<%= f.text_field :name %>
+			<span>ID番号:<%= @customer.id %></span>
+			<% if @customer.deleted_at.nil? %>
+				<span>会員</span>
+			<% else %>
+				<span>退会済</span>
+			<% end %><br>
+			氏名<br><%= f.text_field :name %></p>
+			ニックネーム<br><%= f.text_field :public_name %><br>
+			email<br><%= f.text_field :email %></p>
+			<p>自己紹介</p>
+			<%=f.text_area :self_introduction %>
+			<p>プロフィールイメージ</p>
 		<%= f.attachment_field :profile_image %>
-		<%= f.text_field :email %>
 		<% if @customer.deleted_at.nil? %>
 		<%= f.radio_button :deleted_at ,true,checked:true %>
 		<%= label_tag :deleted_at, "有効" %>
@@ -14,5 +26,7 @@
 		<%= f.radio_button :deleted_at, false, checked:true %>
 		<%= label_tag :deleted_at, "退会" %>
 		<% end %>
-		<%= f.submit "変更",class:"btn btn-primary" %>
+		<p><%= f.submit "変更",class:"btn btn-primary" %></p>
 		<% end %>
+	</div>
+</div>

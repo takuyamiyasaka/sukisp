@@ -4,10 +4,8 @@
 	<%= image_tag "img/main3.jpg" %
 	<%= image_tag "img/main4.jpg" %>
 	<h1 class="toph1">ようこそ</h1>
-	<h4 class="toph1">あなただけのお話聞かせてくれませんか？</h4>
-	<h3 class="toph1">SukiSpはあなたのお話を待っています。</h3>
-	</div>
-	<div class="image">
+	<h4 class="toph2">あなただけのお話聞かせてくれませんか？</h4>
+	<h3><span class="toph3">SukiSp</span><span class="toph4">はあなたのお話を待っています。</span></h3>
 	</div>
 	<div class="row">
 		<div class="col-xs-offset-2 col-xs-8">
@@ -28,45 +26,30 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-6">
-		<div class="recently-topick well text-center"style="background-color: #00bfff">
-			<p class="btn-warning">
-			人気記事</p>
-			<table>
-				<tbody>
-					<% @top_topicks.each do |top| %>
-					<tr>
-						<td>
-							<p style="text-decoration: underline;"><%= link_to top.topick_name, topick_path(top) %></p>
-						</td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-			<span style="color: yellow"><%= link_to "その他の話題はこちらへ",topicks_path %></span>
-		</div>
-	</div>
-	<div class="col-xs-6">
-		<div class="day-topiick well text-center"style="background-color: #F9F790">
-			<p class="btn-info">最近の話題</p>
-			<table style="overflow-y: auto ">
+	<div class="second-main row">
+			<div class="topick-box col-xs-10 col-xs-offset-1">
+		<div class="day-topiick well ">
+			<div class=" text-center" style="font-size: 20px;">最近の話題</div>
+			<table class="table" style="overflow-y: auto ">
 				<tbody>
 					<% @recently_topicks.first(5).each do |recently| %>
 					<tr>
 						<td>
-							<p style="text-decoration: underline;"><%= link_to recently.topick_name, topick_path(recently) %></p>
+							<p style="text-decoration: underline;"><%= link_to recently.topick_name, topick_path(recently) ,:style =>"color:#000" %></p>
 						</td>
 					</tr>
 					<% end %>
 			</table>
 			<%= link_to "その他の話題はこちらへ",topicks_path %>
 		</div>
+
 	</div>
-		<div class="main text-center" style="background-color:#7fffd4">
-			<%= link_to "話題を投稿しましょう。",new_topick_path %>
+
+	</div>
+		<div class="main text-center">
+			<span class="main-font"><%= link_to "話題を投稿しましょう",new_topick_path ,:style => "color:red;"%></span>
 		</div>
-<div class="well text-center news-line" >
+<div class="text-center news-line" >
 <h1>話題のニュース</h1>
 <div class="row">
 	<%= form_tag(root_path, method: :get) do %>

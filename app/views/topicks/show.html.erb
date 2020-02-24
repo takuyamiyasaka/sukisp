@@ -1,44 +1,44 @@
 <div class="text-center">
-<h2 style="text-decoration: underline;"><%= @topick.topick_name %></h2>
-
-<% @topick.topick_images.each do |image| %>
-<%= attachment_image_tag image, :topick_image, :fill, 250,150, format: "jpeg" %>
-<% end %>
+	<h2 style="text-decoration: underline;"><%= @topick.topick_name %></h2>
+	<% @topick.topick_images.each do |image| %>
+		<%= attachment_image_tag image, :topick_image, :fill, 250,150, format: "jpeg" %>
+		<% end %>
 </div><br>
-<div>
-	<%= @topick.customer.public_name %>
-</div>
-<div class="well"style="background-color: #fff">
-<%= @topick.introduction %></p>
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-2 well"style="background-color: #fff">
+	<%= @topick.introduction %>
+	</div>
 </div>
 <div class="text-right">
-	<span>閲覧数:<%= @topick.impressionist_count %></span>
+	<span>投稿ユーザー:<%=@topick.customer.public_name %></span>
 	<% if customer_signed_in? %>
-<%= render "topicks/topick_like", topick: @topick %>
-<% end %>
-
+		<%= render "topicks/topick_like", topick: @topick %>
+	<% else %>
+		<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%=@topick.likes.count %>いいね
+	<% end %>
+	<span>閲覧数:<%= @topick.impressionist_count %></span>
 </div>
-<div class="text-center"><% if @topick.customer == current_customer %>
-	<%= link_to "編集する", edit_topick_path(@topick), class:"btn btn-info" %>
-	 <%= link_to "消去する",topick_path(@topick), method: :delete,class:"btn btn-danger","data-confirm"=>"本当に消しますか?" %>
+<div class="text-center">
+	<% if @topick.customer == current_customer %>
+		<%= link_to "編集する", edit_topick_path(@topick), class:"btn btn-info" %>
+	 	<%= link_to "消去する",topick_path(@topick), method: :delete,class:"btn btn-danger","data-confirm"=>"本当に消しますか?" %>
 	<% else %>
 	<% end %>
 </div>
 
 <div class="text-center">
 	<h3>コメント一覧</h3>
-
-<div id="js-comments">
-	<%= render "topicks/topick_comment", topick_comment: @topick.comments %>
-</div>
+	<div id="js-comments">
+		<%= render "topicks/topick_comment", topick_comment: @topick.comments %>
+	</div>
 </div>
 <div class="well"style="background-color: #fff">
-<h3>コメント投稿</h3>
-<div>
-	<%= form_with(model:[@topick, @comment]) do |f| %>
+	<h3>コメント投稿</h3>
+	<div>
+		<%= form_with(model:[@topick, @comment]) do |f| %>
 		<%= f.attachment_field :image %>
 		<p><%= f.text_area :comment %></p>
 		<%= f.submit "コメント投稿", class:"btn btn-info" %>
-	<% end %>
-</div>
+		<% end %>
+	</div>
 </div>
