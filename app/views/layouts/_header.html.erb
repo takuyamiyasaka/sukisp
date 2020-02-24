@@ -8,12 +8,12 @@
 				</h4>
 				<% else %>
 				<h4><%=link_to root_path do %>
-					<%= image_tag "img/sukisplogo.png",:size =>"160x50" %>
+					<%= image_tag "img/sukisplogo.png",:size =>"160x48" %>
 					<% end %></h4>
 				<% end %>
 		</div>
   		<nav>
-				<ul class="nav navb-tabs nav-justified ">
+				<ul class="toph4 nav navb-tabs nav-justified ">
 				<% if admin_signed_in? %>
 					<li><%= link_to "ジャンル一覧", admins_genres_path %></li>
 					<li><%= link_to "話題一覧", admins_topicks_path %></li>
@@ -27,7 +27,7 @@
 					<li><%= link_to "ログアウト",destroy_customer_session_path, method: :delete %>
 					</li>
 					<% else %>
-					<li class="toph1"><%= link_to "ジャンル", genres_path %>
+					<li><%= link_to "ジャンル", genres_path %>
 					</li>
 					<li><%= link_to "話題", topicks_path %>
 					</li>

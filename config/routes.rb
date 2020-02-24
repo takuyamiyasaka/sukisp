@@ -19,12 +19,10 @@ Rails.application.routes.draw do
 
 
   resources :customers  ,only:[:show,:edit,:update,:destroy] do
-    collection do
-      get "withdraw"
-    end
       member do
         get "follow"
         get "follower"
+        get "withdraw"
       end
   end
 

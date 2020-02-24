@@ -39,8 +39,11 @@ class TopicksController < ApplicationController
   def create
     @topick = Topick.new(topick_params)
     @topick.customer_id = current_customer.id
-    @topick.save
+    if @topick.save
     redirect_to topick_path(@topick)
+    else
+      render :new
+    end
   end
 
   def show
@@ -54,11 +57,15 @@ class TopicksController < ApplicationController
   end
 
   def update
-    topick = Topick.find(params[:id])
-    if topick.customer ==current_customer
-        topick.update(topick_params)
-        redirect_to topick_path(topick)
+    @topick = Topick.find(params[:id])
+    if @topick.customer ==current_customer
+        if @topick.update(topick_params)
+            redirect_to topick_path(@topick)
+        else
+            render :edit
+        end
     else
+      redirect_to topick_path(@topick)
     end
   end
 

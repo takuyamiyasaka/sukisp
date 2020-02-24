@@ -1,5 +1,12 @@
 <div class="text-center well" style="background-color: #fff">
 	<h1>話題編集</h1>
+	<% if @topick.errors.any? %>
+		<h2 class="text-danger"><%= @topick.errors.count %>つのエラー</h2>
+			<ul class="text-danger">
+				<% @topick.errors.full_messages.each do |message|%>
+				<li><%= message %></li>
+				<%end%>
+			<%end%></ul>
 			<%= form_for(@topick,url:admins_topick_path(@topick))  do |f| %>
 	<div class="row">
 		<div class="col-xs-6 text-right">

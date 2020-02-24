@@ -4,8 +4,11 @@ class CommentsController < ApplicationController
 		@topick = Topick.find(params[:topick_id])
 		comment = current_customer.comments.new(comment_params)
 		comment.topick_id = @topick.id
-		comment.save
-		@topick_comment = @topick.comments
+		if comment.save
+			@topick_comment = @topick.comments
+		else
+			redirect_to topick_path(@topick)
+		end
 	end
 
 	def destroy

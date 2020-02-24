@@ -1,6 +1,13 @@
 <h1>会員編集画面</h1>
 	<div class="row">
 		<div class="col-xs-8 well">
+			<% if @customer.errors.any? %>
+		<h2 class="text-danger"><%= @customer.errors.count %>つのエラー</h2>
+			<ul class="text-danger">
+				<% @customer.errors.full_messages.each do |message|%>
+				<li><%= message %></li>
+				<%end%>
+			<%end%></ul>
 	<%= form_for(@customer,url:admins_customer_path(@customer)) do |f| %>
 			<span>ID番号:<%= @customer.id %></span>
 			<% if @customer.deleted_at.nil? %>

@@ -18,9 +18,12 @@ class Admins::TopicksController < ApplicationController
   end
 
   def update
-    topick = Topick.find(params[:id])
-    topick.update(admin_topick_params)
-    redirect_to admins_topicks_path
+    @topick = Topick.find(params[:id])
+    if @topick.update(admin_topick_params)
+        redirect_to admins_topicks_path
+      else
+        render :edit
+      end
   end
 
   def destroy
