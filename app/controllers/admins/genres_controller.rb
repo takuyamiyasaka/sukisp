@@ -13,21 +13,31 @@ class Admins::GenresController < ApplicationController
   end
 
   def create
-  	genre = Genre.new(genre_params)
-  	genre.save
-  	redirect_to admins_genres_path
+  	@genre = Genre.new(genre_params)
+  	if @genre.save
+  	   redirect_to admins_genres_path
+     else
+      @genres = Genre.all
+      render :index
   end
+end
 
   def update
-    genre = Genre.find(params[:id])
+    @genre = Genre.find(params[:id])
     if params[:genre][:is_valid] == "true"
-    genre.is_valid = true
-    genre.update(genre_params)
-    redirect_to admins_genres_path
+    @genre.is_valid = true
+    if @genre.update(genre_params)
+        redirect_to admins_genres_path
+      else
+        render :edit
+    end
    else
-    genre.is_valid = false
-    genre.update(genre_params)
-    redirect_to admins_genres_path
+    @genre.is_valid = false
+    if @genre.update(genre_params)
+        redirect_to admins_genres_path
+      else
+        render :edit
+    end
    end
   end
 

@@ -1,5 +1,12 @@
 <div class="text-center well" style="background-color: #fff">
 <h1 style="color: #01b8be">プロフィール編集</h1>
+<% if @customer.errors.any? %>
+		<h2 class="text-danger"><%= @customer.errors.count %>つのエラー</h2>
+			<ul class="text-danger">
+				<% @customer.errors.full_messages.each do |message|%>
+				<li><%= message %></li>
+				<%end%>
+			<%end%></ul>
 	<%= form_for(@customer) do |f| %>
 	<div class="row">
 		<div class="col-xs-6 text-right">

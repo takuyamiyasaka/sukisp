@@ -1,4 +1,11 @@
 <h1>管理者　ジャンル一覧ページ</h1>
+	<% if @genre.errors.any? %>
+		<h2 class="text-danger"><%= @genre.errors.count %>つのエラー</h2>
+			<ul class="text-danger">
+				<% @genre.errors.full_messages.each do |message|%>
+				<li><%= message %></li>
+				<%end%>
+			<%end%></ul>
 	<%= form_for(@genre,url:admins_genres_path) do |f| %>
 		<%= f.text_field :genre_name %>
 		<%= f.submit "追加" ,class:"btn btn-info" %>

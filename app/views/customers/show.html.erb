@@ -51,7 +51,7 @@
 	<div class="text-center well">
 		<span class="btn btn-info"><%= link_to "プロフィール編集", edit_customer_path(@customer) %></span>
 	<span class="btn btn-warning"><%= link_to "話題新規投稿", new_topick_path %></span>
-	<span class="btn btn-danger"><%= link_to "退会ページ", withdraw_customers_path %>
+	<span class="btn btn-danger"><%= link_to "退会ページ", withdraw_customer_path(@customer) %>
 	</span>
 </div>
 

@@ -2,8 +2,11 @@ class Admins::UpdateContactsController < ApplicationController
 
 	def create
 		contact = UpdateContact.new(contact_params)
-		contact.save
-		redirect_to top_admins_topicks_path
+		if contact.save
+			redirect_to top_admins_topicks_path
+		else
+			redirect_to request.referer,notice:"お知らせに失敗しました。"
+		end
 	end
 	private
 	def contact_params
