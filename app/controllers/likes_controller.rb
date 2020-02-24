@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-
+	before_action :authenticate_customer!
 	def create
 		@topick = Topick.find(params[:topick_id])
 		like = current_customer.likes.new(topick_id: @topick.id)

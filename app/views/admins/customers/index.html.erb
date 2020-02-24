@@ -1,22 +1,26 @@
 <h1>会員一覧</h1>
-<table class="table">
+<table class="table table-bordered text-center">
 	<thead>
-		<tr>
-			<th>ID</th>
-			<th>会員名</th>
-			<th>ステータス</th>
+		<tr class="text-center">
+			<th class="text-center">ID</th>
+			<th class="text-center">会員名</th>
+			<th class="text-center">ステータス</th>
+			<th></th>
 		</tr>
 	</thead>
 		<tbody>
 			<% @customers.each do |customer| %>
 			<tr>
-				<td><%=link_to customer.id, admins_customer_path(customer) %></td>
-				<td><%= customer.name %></td>
+				<td><%=customer.id %></td>
+				<td><%=link_to customer.name,admins_customer_path(customer) %></td>
 				<td><% if customer.deleted_at.nil?  %>
 					<p>会員</p>
 					<% else %>
 					<p>退会済み</p>
 					<% end %>
+				</td>
+				<td class="text-center">
+					<span class="btn btn-warning"><%= link_to "編集する",edit_admins_customer_path(customer) %></span>
 				</td>
 			</tr>
 			<% end %>

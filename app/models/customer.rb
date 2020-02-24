@@ -16,6 +16,9 @@ class Customer < ApplicationRecord
   attachment :profile_image
   has_many :inquiries ,dependent: :destroy
 
+  validates :public_name ,presence: true
+  validates :name ,presence: true
+
   def follow(other_customer)
   	unless self == other_customer
   		self.relationships.find_or_create_by(follow_id: other_customer.id)

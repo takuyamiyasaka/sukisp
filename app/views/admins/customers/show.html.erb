@@ -1,52 +1,27 @@
 <h1>会員詳細</h1>
-<div class="row">
-	<div class="col-xs-6">
-<div class=""><%= @customer.id %>
-<% if @customer.deleted_at.nil? %>
-<span>会員</span>
-<% else %>
-<span>退会済</span>
-<% end %>
-<p>氏名:<%= @customer.name %></p>
-
-
-<p>ニックネーム:<%= @customer.public_name %></p>
-<p>email:<%= @customer.email %>
-	<%= link_to "編集する", edit_admins_customer_path(@customer) %>
-	<%= attachment_image_tag @customer, :profile_image, :fill,60,60, format: "jpeg" %>
-
-
-<div class="text-center">
-		<%= attachment_image_tag @customer, :profile_image, :fill,250, 150, format: "jpeg" %><br>
-<span>名前:<%= @customer.name %></span><br>
-<span>ニックネーム:<%= @customer.public_name %></span>
-<p>自己紹介</p>
-<div class="row">
-	<div class="col-xs-8 col-xs-offset-2">
-<div class="well"><%=@customer.self_introduction %></div>
-</div>
-</div>
-</div>
-
-<div class="col-xs-6 text-center">
-<h4 >投稿した話題</h4>
-	<table class="table">
-		<% @customer.topicks.each do |topick| %>
-		<tr>
-			<td>
-				<%= topick.created_at %>
-			</td>
-		</tr>
-		<% end %>
-	</table>
-</div>
-
-		<div class="row">
-	<div class="text-center well">
-		<span class="btn btn-info"><%= link_to "プロフィール編集", edit_customer_path(@customer) %></span>
-
-	</span>
-</div>
-
+<div class="well">
+	<div class="row">
+		<div class="col-xs-6 text-center">
+			<span>ID番号:<%= @customer.id %></span>
+			<% if @customer.deleted_at.nil? %>
+				<span>会員</span>
+			<% else %>
+				<span>退会済</span>
+			<% end %>
+			<p>氏名:<%= @customer.name %></p>
+			<p>ニックネーム:<%= @customer.public_name %></p>
+			<p>email:<%= @customer.email %></p>
+			<p>自己紹介</p>
+			<%= @customer.self_introduction %>
+		</div>
+		<div class="col-xs-6">
+			<p>プロフィールイメージ</p>
+			<%= attachment_image_tag @customer, :profile_image, :fill,250, 150,fallback:"no_image.jpg",:size =>"260x100"%><br>
+		</div>
+	</div>
+	<div class="edit box text-center">
+		<span class="btn btn-info"><%= link_to "投稿した話題",admins_topicks_path %></span>
+		<span class="btn btn-warning"><%= link_to "編集する", edit_admins_customer_path(@customer) %></span>
+	</div>
 </div>
 
