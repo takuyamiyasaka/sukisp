@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
 	before_action :authenticate_customer!
+
   def show
   	@customer = Customer.find(params[:id])
     @inquiry = @customer.inquiries
@@ -32,12 +33,14 @@ class CustomersController < ApplicationController
     customer = Customer.find(params[:id])
     @customers = customer.followings.all
   end
+
   def follower
     customer = Customer.find(params[:id])
     @customers = customer.followers.all
   end
 
   private
+
   def customer_params
   	params.require(:customer).permit(:profile_image, :name, :public_name,:self_introduction)
   end

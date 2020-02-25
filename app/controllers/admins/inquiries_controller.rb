@@ -1,7 +1,8 @@
 class Admins::InquiriesController < ApplicationController
   before_action :authenticate_admin!
+
   def show
-	@inquiry = Inquiry.find(params[:id])
+	  @inquiry = Inquiry.find(params[:id])
   	@answer = Answer.new
   	@answer.inquiry_id = params[:id]
   end
@@ -17,11 +18,11 @@ class Admins::InquiriesController < ApplicationController
   def update
   	@inquiry = Inquiry.find(params[:id])
   	if params[:inquiry][:unsolved] == "false"
-  		@inquiry.unsolved = false
-  		@inquiry.update(inquiry_params)
+  		 @inquiry.unsolved = false
+  		 @inquiry.update(inquiry_params)
   	else
-  	@inquiry.unsolved = true
-  	@inquiry.update(inquiry_params)
+  	   @inquiry.unsolved = true
+  	   @inquiry.update(inquiry_params)
   	end
   end
 

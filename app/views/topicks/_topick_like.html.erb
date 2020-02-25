@@ -1,13 +1,13 @@
 <div id="like_<%= topick.id %>">
-<% if topick.liked_by?(current_customer) %>
-	<%= link_to topick_likes_path(topick), method: :delete, remote: true do %>
-	<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-	<%= topick.likes.count %>いいね
-	<% end %>
+	<% if topick.liked_by?(current_customer) %>
+		<%= link_to topick_likes_path(topick), method: :delete, remote: true do %>
+		<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+		<%= topick.likes.count %>いいね
+		<% end %>
 	<% else %>
-	<%= link_to topick_likes_path(topick),method: :post, remote: true do %>
-	<i class="fa fa-heart-o" aria-hidden="true"></i>
-	<%= topick.likes.count %>いいね
-	<% end %>
+		<%= link_to topick_likes_path(topick),method: :post, remote: true do %>
+		<i class="fa fa-heart-o" aria-hidden="true"></i>
+		<%= topick.likes.count %>いいね
+		<% end %>
 	<% end %>
 </div>

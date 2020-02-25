@@ -1,31 +1,31 @@
 <h1>管理者ページ</h1>
 <div class="text-center">
-<h4>お問い合わせ</h4>
-<table class="table">
-	<thead>
-		<tr>
-			<th>名前</th>
-			<th>内容</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @inquiries.each do |inquiry| %>
-		<tr>
-			<td>
-				<%= link_to inquiry.customer.name ,admins_customer_path(inquiry) %>
-			</td>
-			<td>
-				<%=link_to inquiry.request, admins_inquiry_path(inquiry)  %>
-			</td>
-			<td>
-				<% if inquiry.unsolved == true %>
-				<p>未解決</p>
-				<% else %>
-				<p>解決</p>
-				<% end %>
-			</td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+	<h4>お問い合わせ</h4>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>名前</th>
+				<th>内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @inquiries.each do |inquiry| %>
+			<tr>
+				<td>
+					<%= link_to inquiry.customer.name ,admins_customer_path(inquiry) %>
+				</td>
+				<td>
+					<%=link_to inquiry.request, admins_inquiry_path(inquiry)  %>
+				</td>
+				<td>
+					<% if inquiry.unsolved == true %>
+						<p>未解決</p>
+					<% else %>
+						<p>解決</p>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 </div>
