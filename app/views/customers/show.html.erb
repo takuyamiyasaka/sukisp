@@ -1,30 +1,32 @@
 <div class="text-center">
-<h1>マイページ</h1>
+	<h1>マイページ</h1>
 </div>
+
 <div class="text-center">
-		<%= attachment_image_tag @customer, :profile_image, :fill,250, 150, format: "jpeg" %><br>
-<span>名前:<%= @customer.name %></span><br>
-<span>ニックネーム:<%= @customer.public_name %></span>
-<p>自己紹介</p>
-<div class="row">
-	<div class="col-xs-8 col-xs-offset-2">
-<div class="well"><%=@customer.self_introduction %></div>
-</div>
-</div>
+	<%= attachment_image_tag @customer, :profile_image, :fill,250, 150, format: "jpeg" %><br>
+	<span>名前:<%= @customer.name %></span><br>
+	<span>ニックネーム:<%= @customer.public_name %></span>
+	<p>自己紹介</p>
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<div><%=@customer.self_introduction %></div>
+		</div>
+	</div>
 </div>
 
 <div class="col-xs-6 text-center">
-<h4 >投稿した話題</h4>
+	<h4><%= link_to "投稿した話題" ,topicks_path(customer_id: @customer.id) %></h4>
 	<table class="table">
-		<% @customer.topicks.each do |topick| %>
+		<% @customer.topicks.first(2).each do |topick| %>
 		<tr>
 			<td>
-				<%= topick.created_at %>
+				<%= link_to topick.created_at.to_s(:datetime_jp) %>
 			</td>
 		</tr>
 		<% end %>
 	</table>
 </div>
+
 	<div class="col-xs-6">
 		<h4 style="color: #fff">l</h4>
 		<table class="table">
@@ -38,28 +40,28 @@
 					<%=link_to @customer.followings.count, follow_customer_path(@customer)%>
 				</td>
 			</tr>
-				<tr>
-					<th>
-						フォロワー
-					</th>
-					<td>
-						<%=link_to @customer.followers.count, follower_customer_path(@customer) %>
-				</tr>
-			</table>
+			<tr>
+				<th>
+					フォロワー
+				</th>
+				<td>
+					<%=link_to @customer.followers.count, follower_customer_path(@customer) %>
+			</tr>
+		</table>
+	</div>
+	<div class="row">
+		<div class="text-center well" style="background-color: #fff">
+			<span class="btn btn-info"><%= link_to "プロフィール編集", edit_customer_path(@customer) %></span>
+		<span class="btn btn-success"><%= link_to "話題新規投稿", new_topick_path %></span>
+		<span class="btn btn-danger"><%= link_to "退会ページ", withdraw_customer_path(@customer) %>
+		</span>
 		</div>
-		<div class="row">
-	<div class="text-center well">
-		<span class="btn btn-info"><%= link_to "プロフィール編集", edit_customer_path(@customer) %></span>
-	<span class="btn btn-warning"><%= link_to "話題新規投稿", new_topick_path %></span>
-	<span class="btn btn-danger"><%= link_to "退会ページ", withdraw_customer_path(@customer) %>
-	</span>
-</div>
+	</div>
 
-</div>
-<div class="text-center"><%= render "relationships/follow", customer: @customer %></div>
-<% if current_customer == @customer %>
-	<p>管理者からの回答</p>
-		<table class="table">
+	<div class="text-center"><%= render "relationships/follow", customer: @customer %></div>
+	<% if current_customer == @customer %>
+		<p class="btn inqbtn"><a>管理者からの回答</a></p>
+		<table class="inquiry table">
 			<thead>
 				<tr>
 					<th>問い合わせ内容</th>
@@ -73,9 +75,10 @@
 						<%= inquiry.request %>
 					</td>
 					<td>
+						<%= inquiry.answer&.answer %>
 					</td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
-		<% end %>
+	<% end %>

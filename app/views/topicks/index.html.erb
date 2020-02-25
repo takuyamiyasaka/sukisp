@@ -7,27 +7,6 @@
 
 
 <%= link_to "新規話題投稿", new_topick_path %>
-	<!--
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>投稿日</th>
-				<th>話題名</th>
-				<th>ジャンル</th>
-				<th>ステータス</th>
-			</tr>
-			<tbody>
-				<% @topicks.each do |topick| %>
-				<tr>
-					<td><%= link_to topick.created_at,topick_path(topick) %></td>
-					<td><%= link_to topick.topick_name,topick_path(topick) %></td>
-					<td><%= topick.genre.genre_name %></td>
-					<td>開催</td>
-				</tr>
-			<% end %>
-		</tbody>
-	</thead>
-</table> -->
 <div class="col-xs-12">
 	<div class="row">
 <% @topicks.each do |topicks| %>

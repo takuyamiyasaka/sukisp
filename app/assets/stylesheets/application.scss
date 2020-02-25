@@ -23,6 +23,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 html{
 	min-height:100%;
 	position:relative;
@@ -39,6 +40,7 @@ body{
 	margin-top: 110px;
 	height:100%;
 	margin-bottom:6em;
+	background:linear-gradient(#e0ffff,#f8f8ff);
 }
 footer {
 	height:6em;
@@ -62,6 +64,10 @@ footer {
 .actions {
 	margin-top:10px;
 	margin-bottom:5px;
+}
+
+.inquiry {
+	display: none;
 }
 
 .login {
@@ -104,37 +110,6 @@ footer {
 }
 .box {
 	margin-top:10px;
-}
-#slideshow {
-   position: relative;
-   width:  640px; /* 画像の横幅に合わせて記述 */
-   height: 270px; /* 画像の高さに合わせて記述 */
-}
-#slideshow img {
-   position: absolute;
-   top: 0;
-   left:0;
-   z-index: 8;
-   opacity: 0.0;
-}
-#slideshow img.active {
-   z-index: 10;
-   opacity: 1.0;
-}
-#slideshow img.last-active {
-   z-index: 9;
-}
-.image1 {
-background-image: image-url("/img/image1.jpg");
-}
-.image2 {
-background-image: image-url("/img/image2.jpg");
-}
-.image3 {
-background-image: image-url("/img/image3.jpg");
-}
-.image4 {
-background-image: image-url("/img/image4.jpg");
 }
 
 .toph1 {

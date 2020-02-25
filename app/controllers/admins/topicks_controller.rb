@@ -7,6 +7,7 @@ class Admins::TopicksController < ApplicationController
   def top
   	@inquiries = Inquiry.where(unsolved: true)
   	@contact = UpdateContact.new
+    @answer = Answer.all
   end
 
   def show

@@ -1,4 +1,5 @@
 <div class="main-top">
+	<p class="notice"><%= flash[:notice] %></p>
 	<%#<%= image_tag "img/main1.jpg", class:"active"
 	<%= image_tag "img/main2.jpg" %
 	<%= image_tag "img/main3.jpg" %
@@ -6,68 +7,78 @@
 	<h1 class="toph1">ようこそ</h1>
 	<h4 class="toph2">あなただけのお話聞かせてくれませんか？</h4>
 	<h3><span class="toph3">SukiSp</span><span class="toph4">はあなたのお話を待っています。</span></h3>
-	</div>
+</div>
+
+	<div class="big-box" style="background-color: #f0ffff">
 	<div class="row">
 		<div class="col-xs-offset-2 col-xs-8">
 			<div class="admin-contact">
 				<p style="text-decoration: underline">運営からのお知らせ</p>
-			<table class="table"style="overflow-y: auto ">
-				<% @contacts.each do |contact| %>
-				<tr>
-					<td>
+				<table class="table"style="overflow-y: auto ">
+					<% @contacts.each do |contact| %>
+					<tr>
+						<td>
 						<%= contact.created_at.to_s(:datetime_jp) %>
-					</td>
-					<td>
+						</td>
+						<td>
 						<%= contact.contact %>
-					</td>
-			<% end %>
-				</tr>
-			</table>
+						</td>
+					<% end %>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
 	<div class="second-main row">
-			<div class="topick-box col-xs-10 col-xs-offset-1">
-		<div class="day-topiick well ">
-			<div class=" text-center" style="font-size: 20px;">最近の話題</div>
-			<table class="table" style="overflow-y: auto ">
-				<tbody>
-					<% @recently_topicks.first(5).each do |recently| %>
-					<tr>
-						<td>
-							<p style="text-decoration: underline;"><%= link_to recently.topick_name, topick_path(recently) ,:style =>"color:#000" %></p>
-						</td>
-					</tr>
-					<% end %>
-			</table>
-			<%= link_to "その他の話題はこちらへ",topicks_path %>
+		<div class="topick-box col-xs-10 col-xs-offset-1">
+			<div class="day-topiick  ">
+				<div class=" text-center panel-header" style="font-size: 20px;">最近の話題</div>
+				<table class="table table-hover" style="overflow-y: auto ">
+					<tbody>
+						<% @recently_topicks.first(5).each do |recently| %>
+						<tr>
+							<td class="col-xs-3">
+								<%= recently.created_at.to_s(:datetime_jp) %>
+							</td>
+							<td class="col-xs-2">
+								<%= recently.genre.genre_name %>
+							</td>
+							<td class="col-xs-7">
+								<span style="text-decoration: underline;"><%= link_to recently.topick_name, topick_path(recently) ,:style =>"color:#000" %></span>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<%= link_to "その他の話題はこちらへ",topicks_path %>
+			</div>
 		</div>
-
 	</div>
 
+	<div class="main text-center">
+		<span class="main-font"><%= link_to "話題を投稿しましょう",new_topick_path ,:style => "color:red;"%></span>
 	</div>
-		<div class="main text-center">
-			<span class="main-font"><%= link_to "話題を投稿しましょう",new_topick_path ,:style => "color:red;"%></span>
-		</div>
+</div>
+
 <div class="text-center news-line" >
-<h1>話題のニュース</h1>
-<div class="row">
-	<%= form_tag(root_path, method: :get) do %>
-		<%= select_tag "search[country]",options_for_select({"アメリカ"=>"us","日本"=>"jp"}) %>
-		<%= submit_tag "検索" %>
+	<h1>話題のニュース</h1>
+	<div class="row">
+		<%= form_tag(root_path, method: :get) do %>
+			<%= select_tag "search[country]",options_for_select({"アメリカ"=>"us","日本"=>"jp"}) %>
+			<%= submit_tag "検索" %>
 		<% end %>
-<div class="news" style="overflow-y: auto ">
-	<% @response["articles"].shuffle.each do |a| %>
-	<div class="col-xs-6">
-	  <div class="box">
-	  	<%= image_tag a["urlToImage"], :size => "180x110",fallback:"no image.png",size:"180x110"%><br>
-	  	<%= link_to a["url"] do %>
-	  	<%= a["title"].truncate(45)  %>
-	  <% end %><br>
-	  <%= a["publishedAt"] %>
+		<div class="news" style="overflow-y: auto ">
+			<% @response["articles"].shuffle.each do |a| %>
+			<div class="col-xs-6">
+	  			<div class="box">
+	  				<%#<%= image_tag a["urlToImage"], :size => "180x110",fallback:"no image.png",size:"180x110"%><br>
+				  	<%= link_to a["url"] do %>
+				  	<%= a["title"].truncate(45)  %>
+				  <% end %><br>
+				  <%= a["publishedAt"] %>
+				</div>
+			</div>
+			<% end %>
+		</div>
 	</div>
-</div>
-	<% end %>
-</div>
-</div>
 </div>

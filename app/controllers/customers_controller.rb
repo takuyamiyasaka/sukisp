@@ -3,7 +3,6 @@ class CustomersController < ApplicationController
   def show
   	@customer = Customer.find(params[:id])
     @inquiry = @customer.inquiries
-    @i = Inquiry.all
   end
 
   def edit

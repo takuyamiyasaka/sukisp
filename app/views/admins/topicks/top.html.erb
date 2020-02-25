@@ -33,7 +33,6 @@
 ">
 <h5><%= link_to "過去のお問い合わせ",admins_inquiries_path %></h5>
 	<h3>運営からのお知らせフォーム</h1>
-		<p class="notice"><%= flash[:notice] %></p>
 	<%= form_for(@contact,url:admins_update_contacts_path) do |f| %>
 		<%=f.text_area :contact ,size: "50x7"%><br>
 		<%= f.submit "更新" %>

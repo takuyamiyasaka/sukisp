@@ -17,6 +17,6 @@ before_action :authenticate_customer!
 
   private
   def inquiry_params
-  	params.require(:inquiry).permit(:request,:unsloved)
+  	params.require(:inquiry).permit(:request,:unsloved,:is_receive)
   end
 end
