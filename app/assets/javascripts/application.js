@@ -14,7 +14,6 @@
 //= require activestorage
 //= require jquery
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
 
 // $(function() {
@@ -47,3 +46,12 @@
 // $(function() {
 //    setInterval( "slideSwitch()", 3000 );
 // });
+
+$(function(){
+	$(".inqbtn").on("click",function(){
+		$(".inquiry").removeClass("inquiry");
+	});
+	$(".inqbtn").on("click",function(){
+		$(".inquiry").addClass("inquiry");
+	});
+});

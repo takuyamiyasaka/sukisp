@@ -15,15 +15,13 @@ class Admins::InquiriesController < ApplicationController
   end
 
   def update
-  	inquiry = Inquiry.find(params[:id])
+  	@inquiry = Inquiry.find(params[:id])
   	if params[:inquiry][:unsolved] == "false"
-  		inquiry.unsolved = false
-  		inquiry.update(inquiry_params)
-  		redirect_to admins_inquiry_path(inquiry)
+  		@inquiry.unsolved = false
+  		@inquiry.update(inquiry_params)
   	else
-  	inquiry.unsolved = true
-  	inquiry.update(inquiry_params)
-  	redirect_to admins_inquiry_path(inquiry)
+  	@inquiry.unsolved = true
+  	@inquiry.update(inquiry_params)
   	end
   end
 

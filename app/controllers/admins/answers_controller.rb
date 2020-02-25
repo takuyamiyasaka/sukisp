@@ -5,7 +5,11 @@ class Admins::AnswersController < ApplicationController
 
   def create
   	answer = Answer.new(answer_params)
+    inquiry = answer.inquiry.request
+    customer = answer.inquiry.customer
   	answer.save
+    ContactMailer.send_when_admin_answer(customer,answer,inquiry).deliver
+
   	redirect_to top_admins_topicks_path
   end
   private
