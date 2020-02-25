@@ -2,13 +2,15 @@
 	<h2 style="text-decoration: underline;"><%= @topick.topick_name %></h2>
 	<% @topick.topick_images.each do |image| %>
 		<%= attachment_image_tag image, :topick_image, :fill, 250,150, format: "jpeg" %>
-		<% end %>
+	<% end %>
 </div><br>
+
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2 well"style="background-color: #e0ffff">
 	<p style="font-size:20px;"><%= @topick.introduction %></p>
 	</div>
 </div>
+
 <div class="text-right">
 	<span>投稿ユーザー:<%=@topick.customer.public_name %></span>
 	<% if customer_signed_in? %>
@@ -18,6 +20,7 @@
 	<% end %>
 	<span>閲覧数:<%= @topick.impressionist_count %></span>
 </div>
+
 <div class="text-center">
 	<% if @topick.customer == current_customer %>
 		<%= link_to "編集する", edit_topick_path(@topick), class:"btn btn-info" %>
@@ -32,6 +35,7 @@
 		<%= render "topicks/topick_comment", topick_comment: @topick.comments %>
 	</div>
 </div>
+
 <div class="well"style="background-color: #fff">
 	<h3>コメント投稿</h3>
 	<div>

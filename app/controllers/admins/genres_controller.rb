@@ -5,9 +5,6 @@ class Admins::GenresController < ApplicationController
     @genre = Genre.new
   end
 
-  def show
-  end
-
   def edit
     @genre = Genre.find(params[:id])
   end
@@ -25,19 +22,19 @@ end
   def update
     @genre = Genre.find(params[:id])
     if params[:genre][:is_valid] == "true"
-    @genre.is_valid = true
-    if @genre.update(genre_params)
-        redirect_to admins_genres_path
+       @genre.is_valid = true
+      if @genre.update(genre_params)
+         redirect_to admins_genres_path
       else
-        render :edit
-    end
+         render :edit
+      end
    else
-    @genre.is_valid = false
-    if @genre.update(genre_params)
-        redirect_to admins_genres_path
+       @genre.is_valid = false
+      if @genre.update(genre_params)
+         redirect_to admins_genres_path
       else
-        render :edit
-    end
+         render :edit
+      end
    end
   end
 

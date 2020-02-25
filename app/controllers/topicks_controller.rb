@@ -21,13 +21,13 @@ class TopicksController < ApplicationController
 
   def index
     if params[:genre_id]
-      genre = Genre.find(params[:genre_id])
-      @topicks = genre.topicks.page(params[:page])
+       genre = Genre.find(params[:genre_id])
+       @topicks = genre.topicks.page(params[:page])
     elsif params[:customer_id]
-      customer = Customer.find(params[:customer_id])
-      @topicks = customer.topicks.page(params[:page])
+       customer = Customer.find(params[:customer_id])
+       @topicks = customer.topicks.page(params[:page])
     else
-      @topicks = Topick.page(params[:page])
+       @topicks = Topick.page(params[:page])
     end
   end
 
@@ -40,9 +40,9 @@ class TopicksController < ApplicationController
     @topick = Topick.new(topick_params)
     @topick.customer_id = current_customer.id
     if @topick.save
-    redirect_to topick_path(@topick)
+       redirect_to topick_path(@topick)
     else
-      render :new
+       render :new
     end
   end
 
@@ -76,6 +76,7 @@ class TopicksController < ApplicationController
         topick.delete
         redirect_to topicks_path
     else
+        redirect_to topicks_path
     end
   end
 

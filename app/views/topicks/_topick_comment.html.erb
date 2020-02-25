@@ -2,32 +2,30 @@
 <table>
 	<tbody>
 		<div class="comment-box">
-		<tr >
-			<td  class="comment-name">
-				<%= comment.customer.public_name %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= attachment_image_tag comment, :image, :fill, 80,70,fallback:"no image.png",size:"80x70"%>
-			</td>
-			<td>
-				<%= comment.comment %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= comment.created_at.to_s(:datetime_jp) %>
-			</td>
-			<td>
-				<% if comment.customer == current_customer %>
-		<%= link_to "削除", topick_comment_path(comment.topick_id, comment.id), method: :delete ,remote:true ,:style=>"color:red;"%>
-		<% end %>
-	</td>
-</tr>
-</div>
-
-
-</tbody>
+			<tr >
+				<td  class="comment-name">
+					<%= comment.customer.public_name %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= attachment_image_tag comment, :image, :fill, 80,70,fallback:"no image.png",size:"80x70"%>
+				</td>
+				<td>
+					<%= comment.comment %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= comment.created_at.to_s(:datetime_jp) %>
+				</td>
+				<td>
+					<% if comment.customer == current_customer %>
+						<%= link_to "削除", topick_comment_path(comment.topick_id, comment.id), method: :delete ,remote:true ,:style=>"color:red;"%>
+					<% end %>
+				</td>
+			</tr>
+		</div>
+	</tbody>
 </table>
 <% end %>

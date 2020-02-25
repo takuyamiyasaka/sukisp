@@ -1,25 +1,26 @@
 <div class="text-center well" style="background-color: #fff">
-<h1 style="color: #01b8be">プロフィール編集</h1>
-<% if @customer.errors.any? %>
+	<h1 style="color: #01b8be">プロフィール編集</h1>
+	<% if @customer.errors.any? %>
 		<h2 class="text-danger"><%= @customer.errors.count %>つのエラー</h2>
-			<ul class="text-danger">
-				<% @customer.errors.full_messages.each do |message|%>
-				<li><%= message %></li>
-				<%end%>
-			<%end%></ul>
+		<ul class="text-danger">
+			<% @customer.errors.full_messages.each do |message|%>
+			<li><%= message %></li>
+			<%end%>
+		</ul>
+	<%end%>
 	<%= form_for(@customer) do |f| %>
 	<div class="row">
 		<div class="col-xs-6 text-right">
 			<p>名前:     <%= f.text_field :name %></p>
-		<p>ニックネーム:<%= f.text_field :public_name %></p>
-		<p>自己紹介:<%= f.text_area :self_introduction %>
-		<p>E-mail:  <%= f.text_field :email %></p>
-	</div>
-	<div class="col-xs-6">
+			<p>ニックネーム:<%= f.text_field :public_name %></p>
+			<p>自己紹介:<%= f.text_area :self_introduction %></p>
+			<p>E-mail:  <%= f.text_field :email %></p>
+		</div>
+		<div class="col-xs-6">
 			<p><%= f.attachment_field :profile_image %></p>
-<%= f.submit "更新" %>
-		<% end %>
-	</div>
+		<%= f.submit "更新" %>
+	<% end %>
+		</div>
 	</div>
 </div>
 

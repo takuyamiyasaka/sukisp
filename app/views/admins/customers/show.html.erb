@@ -19,6 +19,7 @@
 			<%= attachment_image_tag @customer, :profile_image, :fill,250, 150,fallback:"no_image.jpg",:size =>"260x100"%><br>
 		</div>
 	</div>
+
 	<div class="edit box text-center">
 		<span class="btn btn-info"><%= link_to "投稿した話題",admins_topicks_path %></span>
 		<span class="btn btn-warning"><%= link_to "編集する", edit_admins_customer_path(@customer) %></span>
