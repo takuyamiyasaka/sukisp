@@ -35,7 +35,7 @@
 		<%= render "topicks/topick_comment", topick_comment: @topick.comments %>
 	</div>
 </div>
-
+<% if customer_signed_in? %>
 <div class="well"style="background-color: #fff">
 	<h3>コメント投稿</h3>
 	<div>
@@ -46,3 +46,4 @@
 		<% end %>
 	</div>
 </div>
+<% end %>
