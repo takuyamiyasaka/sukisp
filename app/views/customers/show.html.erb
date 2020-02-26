@@ -1,5 +1,5 @@
 <div class="text-center">
-	<h1>マイページ</h1>
+	<h1 style="color: #01b8be">マイページ</h1>
 </div>
 
 <div class="text-center">
@@ -51,10 +51,13 @@
 	</div>
 	<div class="row">
 		<div class="text-center well" style="background-color: #fff">
-			<span class="btn btn-info"><%= link_to "プロフィール編集", edit_customer_path(@customer) %></span>
 		<span class="btn btn-success"><%= link_to "話題新規投稿", new_topick_path %></span>
+		<% if @customer.id == current_customer.id %>
+		<span class="btn btn-info"><%= link_to "プロフィール編集", edit_customer_path(@customer) %></span>
 		<span class="btn btn-danger"><%= link_to "退会ページ", withdraw_customer_path(@customer) %>
 		</span>
+		<else>
+		<% end %>
 		</div>
 	</div>
 
