@@ -1,10 +1,17 @@
 <div class="text-center">
+	<% if @customer.id == current_customer.id %>
 	<h1 style="color: #01b8be">マイページ</h1>
+	<% else %>
+	<h1 style="color:#01b8be"><%=@customer.public_name %>ページ</h1>
+	<% end %>
 </div>
 
 <div class="text-center">
 	<%= attachment_image_tag @customer, :profile_image, :fill,250, 150, format: "jpeg" %><br>
-	<span>名前:<%= @customer.name %></span><br>
+	<% if @customer.id == current_customer.id %>
+		<span>名前:<%= @customer.name %></span><br>
+		<% else %>
+	<% end %>
 	<span>ニックネーム:<%= @customer.public_name %></span>
 	<p>自己紹介</p>
 	<div class="row">
