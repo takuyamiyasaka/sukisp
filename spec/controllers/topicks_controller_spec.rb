@@ -1,8 +1,5 @@
 require "rails_helper"
 RSpec.describe TopicksController, type: :controller do
-	before do
-		@topick = Topick.create(topick_name: "日本")
-	end
 	describe "topページの表示" do
 		context "トップページが表示される。" do
 			before do
@@ -54,7 +51,6 @@ RSpec.describe TopicksController, type: :controller do
 			end
 		end
 	end
-	
 
 	describe "newページが表示される" do
 		context "newページが表示される" do
