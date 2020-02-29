@@ -16,7 +16,7 @@
 			<%= attachment_image_tag image , :topick_image, :fill,560,150, class: "pull-left profile-thumb",fallback:"no_image.png" %><br>
 		<% end %><br>
 		<span class="genre-mini" style="background-color: #7fffd4 "><%= topicks.genre.genre_name %></span>
-		<span>投稿者  <%=link_to topicks.customer.public_name,customer_path(topicks) %></span><br>
+		<span>投稿者  <%=link_to topicks.customer.public_name,customer_path(topicks.customer) %></span><br>
 		<%=link_to topicks.topick_name, topick_path(topicks) %> <br>
 		<%=link_to topicks.created_at.to_s(:datetime_jp),topick_path(topicks) %>
 		<span><%= topicks.likes.count %>いいね</span>
