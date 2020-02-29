@@ -68,7 +68,7 @@
 			<%= submit_tag "検索" %>
 		<% end %>
 		<div class="news" style="overflow-y: auto ">
-<!-- 			<% @response["articles"].shuffle.each do |a| %>
+			<% @response["articles"].shuffle.each do |a| %>
 			<div class="col-xs-6">
 	  			<div class="box">
 	  				<%= image_tag a["urlToImage"], :size => "180x110",fallback:"no image.png",size:"180x110"%><br>
@@ -81,4 +81,4 @@
 			<% end %>
 		</div>
 	</div>
-</div> -->
+</div>
