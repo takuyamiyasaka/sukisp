@@ -1,5 +1,5 @@
 FactoryBot.define do
-	# password = Faker::Internet.password
+	password = Faker::Internet.password
 
 	factory :customer do
 		sequence(:name) { |n| "test_name#{n}"}
@@ -8,9 +8,6 @@ FactoryBot.define do
 		password{ password }
 		password_confirmation { password }
 
-    # after(:create) do |customer|
-    #   create_list(:topick, 2, customer: customer)
-    # end
 
     trait :no_name do
       name {}
@@ -20,28 +17,10 @@ FactoryBot.define do
       public_name {}
     end
 
-     trait :create_with_topics do
+     trait :create_with_topicks do
        after(:create) do |customer|
-         create_list(:topick, 3, customer: customer)
+         create_list(:topick, 3, customer: customer, genre: genre)
        end
      end
 	end
 end
-
-
-
-
-
-
-		# t.string "email", default: "", null: false
-  #   t.string "encrypted_password", default: "", null: false
-  #   t.string "reset_password_token"
-  #   t.datetime "reset_password_sent_at"
-  #   t.datetime "remember_created_at"
-  #   t.string "name"
-  #   t.string "public_name"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  #   t.string "profile_image_id"
-  #   t.datetime "deleted_at"
-  #   t.text "self_introduction"
