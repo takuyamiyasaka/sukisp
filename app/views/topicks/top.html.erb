@@ -71,7 +71,11 @@
 			<% @response["articles"].shuffle.each do |a| %>
 			<div class="col-xs-6">
 	  			<div class="box">
-	  				
+	  				<% unless a["urlToImage"] == nil %>
+	  				<%= image_tag a["urlToImage"], :size => "180x110",fallback:"no image.png",size:"180x110"%><br>
+	  				<% else %>
+	  				<%= image_tag "no image.png",:size => "180x110" %><br>
+	  				<% end %>
 				  	<%= link_to a["url"] do %>
 				  	<%= a["title"].truncate(45)  %>
 				  <% end %><br>
