@@ -8,11 +8,12 @@ RSpec.describe Answer, type: :model do
 	end
 	describe "保存のテスト" do
 		it "正しく保存される" do
-			inquiry = create(:inquiry)
-			expect(Factorybot.create(:answer,answer_id: inquiry.id)).to be_valid
+			customer = create(:customer)
+			inquiry = FactoryBot.create(:inquiry, customer_id: customer.id)
+			expect(FactoryBot.create(:answer,inquiry_id: inquiry.id)).to be_valid
 		end
 		it "正しく保存されない" do
-			expect(Factorybot.build(:answer, :no_answer)).to_not be_valid
+			expect(FactoryBot.build(:answer, :no_answer)).to_not be_valid
 		end
 	end
 end
