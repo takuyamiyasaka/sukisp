@@ -16,6 +16,6 @@ module AuthenticationHelper
 
 	private
 	def warden_scope(resource)
-		resource.class.name.undrscore.to_sym
+		resource.class.name.underscore.to_sym
 	end
 end
