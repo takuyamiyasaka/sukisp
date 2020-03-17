@@ -35,8 +35,34 @@ RSpec.feature "ヘッダー、アバウトページ、ログイン、ログア�
 		end
 		scenario "正しくログインして、リダイレクトされている" do
 			expect(page).to have_current_path root_path
+		end
+	end
+
+	feature "ログアウトの確認" do
+		before do
+			login(@customer)
+			visit customer_path(@customer)
+			all("a[data-method='delete'][href='/customers/sign_out']")[0].click
+		end
+		scenario "正しくログアウト" do
+			expect(page).to have_current_path root_path
+		end
+	end
+	feature "ヘッダーリンクの確認" do
+		scenario "ログイン時" do
+			login(@customer)
+			visit root_path
 			expect(page).to have_link "",href: topicks_path
 			expect(page).to have_link "",href: destroy_customer_session_path
+			expect(page).to have_link "",href: genres_path
+			expect(page).to have_link "",href: customer_path(@customer)
+		end
+		scenario "ログアウト" do
+			visit root_path
+			expect(page).to have_link "",href: topicks_path
+			expect(page).to have_link "",href: genres_path
+			expect(page).to have_link "",href: new_customer_session_path
+			expect(page).to have_link "",href: about_topicks_path
 		end
 	end
 end
