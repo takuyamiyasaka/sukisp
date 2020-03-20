@@ -54,6 +54,10 @@ class TopicksController < ApplicationController
 
   def edit
     @topick = Topick.find(params[:id])
+    if @topick.customer == current_customer
+    else
+      redirect_to topick_path(@topick)
+    end
   end
 
   def update

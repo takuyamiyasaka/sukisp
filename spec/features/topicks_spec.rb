@@ -22,6 +22,10 @@ RSpec.feature "Topickに関するテスト",type: :feature do
 				visit new_topick_path
 				expect(page).to have_current_path new_customer_session_path
 			end
+			scenario "topickの編集ページのリダイレクト先" do
+				visit edit_topick_path(@topick1)
+				expect(page).to have_current_path new_customer_session_path
+			end
 		end
 	end
 	feature "ログインした状態" do
@@ -45,6 +49,10 @@ RSpec.feature "Topickに関するテスト",type: :feature do
 				visit topick_path(@topick1)
 				expect(page).to have_content @topick1.topick_name
 				expect(page).to have_link "",href:edit_topick_path(@topick1)
+			end
+			scenario "話題編集ページ自分が投稿したページ以外のリダイレクト" do
+				visit edit_topick_path(@topick2)
+				expect(page).to have_current_path topick_path(@topick2)
 			end
 		end
 		feature "話題の更新" do
