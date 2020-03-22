@@ -83,15 +83,20 @@ RSpec.feature "管理者のテスト",type: :feature do
 				@genre = create(:genre)
 				visit edit_admins_genre_path(@genre)
 				find_field("genre[genre_name]").set("title_b")
+				find("input[name='genre[is_valid]'][value='false']").set(true)
 				find("input[name='commit']").click
 			end
-			scenario "genreの更新" do
+			scenario "genreの更新の確認" do
 				expect(page).to have_content "title_b"
+			end
+			scenario "genreの更新後一覧ページ" do
+				visit admins_genres_path
+				expect(page).to have_content "無効"
 			end
 		end
 	end
+	#it { should have_checked_field 'publish', with '公開する' }
 end
-# "ログインの表記とリンク"
 # "ジャンルの表記とリンク"
 # "話題の表記とリンク"
 # "会員の表記とリンク"
