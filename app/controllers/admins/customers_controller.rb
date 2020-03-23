@@ -1,8 +1,9 @@
 class Admins::CustomersController < ApplicationController
 	before_action :authenticate_admin!
-
 	def index
-		@customers = Customer.with_deleted
+		@q = Customer.ransack(params[:q])#gem ransack追加
+		#上の記述だけで簡単なソート機能が使える
+		@customers = @q.result(distinct: true).with_deleted
 	end
 
 	def show

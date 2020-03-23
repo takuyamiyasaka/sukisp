@@ -2,7 +2,7 @@
 <table class="table table-bordered text-center">
 	<thead>
 		<tr class="text-center">
-			<th class="text-center">ID</th>
+			<th class="text-center"><%= sort_link(@q, :id, "ID",default_order: :desc,hide_indicator: true) %></th>
 			<th class="text-center">会員名</th>
 			<th class="text-center">ステータス</th>
 			<th></th>

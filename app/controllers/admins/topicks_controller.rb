@@ -1,7 +1,8 @@
 class Admins::TopicksController < ApplicationController
   before_action :authenticate_admin!
   def index
-  	@topick = Topick.all
+    @q = Topick.ransack(params[:q])
+  	@topick = @q.result(distinct: :true)
   end
 
   def top

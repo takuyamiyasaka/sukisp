@@ -2,7 +2,7 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>作成日</th>
+			<th class="topick_create"><%= sort_link(@q, :created_at, "作成日",default_order: :desc,hide_indicator: :true,:style=>"color:#fff")  %></th>
 			<th>投稿者</th>
 			<th>ジャンル</th>
 			<th>話題</th>
