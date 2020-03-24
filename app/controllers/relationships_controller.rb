@@ -6,7 +6,6 @@ class RelationshipsController < ApplicationController
 		following = current_customer.follow(@customer)
 		if following.save
 			flash[:success] = "フォロー完了"
-			redirect_to current_customer
 		else
 			flash.now[:alert] = "フォローに失敗しました"
 			redirect_to customer_path(customer)
@@ -17,7 +16,6 @@ class RelationshipsController < ApplicationController
 		following = current_customer.unfollow(@customer)
 		if following.destroy
 			flash[:success] = "ユーザーのフォロー解除"
-			redirect_to current_customer
 		else
 			flash.now[:aleert] = "ユーザーのフォロー解除失敗しました"
 			redirect_to customer_path(customer)
