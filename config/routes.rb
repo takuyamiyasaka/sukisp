@@ -38,7 +38,8 @@ Rails.application.routes.draw do
 
   resources :relationships ,only: [:create, :destroy]
   resources :genres ,only: [:index, :show]
-
+  resources :messages
+  resources :rooms
 
   namespace :admins do
     resources :genres ,only:[:index, :create,:update,:edit]
