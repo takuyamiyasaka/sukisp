@@ -34,6 +34,21 @@
 	</table>
 </div>
 
+<% if @customer.id == current_customer.id %>
+
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :customer_id, :value=> @customer.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
+  <% end %>
+<% end %>
+
 	<div class="col-xs-6">
 		<h4 style="color: #fff">l</h4>
 		<table class="table">

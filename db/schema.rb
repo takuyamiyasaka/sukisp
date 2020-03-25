@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_100811) do
+ActiveRecord::Schema.define(version: 2020_03_25_113251) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_02_25_100811) do
     t.text "self_introduction"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_entries_on_customer_id"
+    t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -112,6 +121,16 @@ ActiveRecord::Schema.define(version: 2020_02_25_100811) do
     t.index ["topick_id"], name: "index_likes_on_topick_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_messages_on_customer_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "follow_id"
@@ -120,6 +139,12 @@ ActiveRecord::Schema.define(version: 2020_02_25_100811) do
     t.index ["customer_id", "follow_id"], name: "index_relationships_on_customer_id_and_follow_id", unique: true
     t.index ["customer_id"], name: "index_relationships_on_customer_id"
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "room_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topick_images", force: :cascade do |t|

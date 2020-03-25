@@ -3,6 +3,24 @@ class CustomersController < ApplicationController
 
   def show
   	@customer = Customer.find(params[:id])
+    @customer_e = Entry.where(customer_id: current_customer.id)
+    @other_e = Entry.where(customer_id: @customer.id)
+    if @customer.id == current_customer.id
+    else
+      @customer_e.each do |cu|
+        @other_e.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
     @inquiry = @customer.inquiries
   end
 
