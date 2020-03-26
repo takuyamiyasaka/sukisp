@@ -3,20 +3,21 @@ class CustomersController < ApplicationController
 
   def show
   	@customer = Customer.find(params[:id])
-    @customer_e = Entry.where(customer_id: current_customer.id)
-    @other_e = Entry.where(customer_id: @customer.id)
-    if @customer.id == current_customer.id
-    else
-      @customer_e.each do |cu|
-        @other_e.each do |u|
-          if cu.room_id == u.room_id then
+    #エントリーしているＩＤをすべて持ってきている
+    @current_customer_entry = Entry.where(customer_id: current_customer.id)
+    @other_customer_entry = Entry.where(customer_id: @customer.id)
+    unless @customer.id == current_customer.id
+      #マイページだと処理はない
+      @current_customer_entry.each do |current|
+        @other_customer_entry.each do |other|
+          #entryを並べてroom_idをチッェク
+          if current.room_id == other.room_id
             @isRoom = true
-            @roomId = cu.room_id
+            @roomId = current.room_id
           end
         end
       end
-      if @isRoom
-      else
+      unless @isRoom
         @room = Room.new
         @entry = Entry.new
       end
