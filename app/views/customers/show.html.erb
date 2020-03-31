@@ -34,20 +34,6 @@
 	</table>
 </div>
 
-<% if @customer.id == current_customer.id %>
-
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :customer_id, :value=> @customer.id %>
-      <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
-<% end %>
 
 	<div class="col-xs-6">
 		<h4 style="color: #fff">l</h4>
@@ -84,6 +70,22 @@
 	</div>
 
 	<div class="follow_js text-center"><%= render "relationships/follow", customer: @customer %></div>
+	<div class="text-center">
+		<% unless @customer.id == current_customer.id %>
+		<% if @customer.following?(current_customer) && current_customer.following?(@customer) %>
+  			<% if @isRoom == true %>
+    			<%= link_to "チャットへ",room_path(@roomId) %>
+			  <% else %>
+			    <%= form_for @room do |f| %>
+		    	  <%= fields_for @entry do |e| %>
+		        	<%= e.hidden_field :customer_id, :value=> @customer.id %>
+		      <% end %>
+		      <%= f.submit "チャットを始める" %>
+		      <% end %>
+		    <% end %>
+		  <% end %>
+		<% end %>
+	</div>
 	<% if current_customer == @customer %>
 		<p class="btn inqbtn"><a>管理者からの回答</a></p>
 		<table class="inquiry table">

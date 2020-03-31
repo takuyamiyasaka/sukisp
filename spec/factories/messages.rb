@@ -1,7 +1,10 @@
 FactoryBot.define do
+
   factory :message do
-    customer { nil }
-    room { nil }
-    content { "MyText" }
+    sequence(:content) {|n| "text#{n}"}
+
+    trait :no_content do
+    	content {}
+    end
   end
 end

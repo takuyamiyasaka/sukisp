@@ -1,15 +1,16 @@
-<h1>DM</h1>
+<h1>ダイレクトメッセージ</h1>
 
 <h4>参加者</h4>
 <% @entries.each do |e| %>
-  <h5><strong><%= link_to e.customer.email,customer_path(e.customer)%>さん</a></strong></h5>
+  <h5><strong><%= link_to e.customer.public_name,customer_path(e.customer)%>さん</a></strong></h5>
 <% end %>
 
 <hr>
 <% if @messages.present? %>
   <% @messages.each do |m| %>
     <strong><%= m.content %></strong>
-    <small>by <strong><%= link_to  m.customer.email,customer_path(m.customer) %>さん</a></strong></small>
+    <small>by <strong><%= link_to  m.customer.public_name,customer_path(m.customer) %>さん</strong></small>
+    <%= m.created_at.to_s(:datetime_jp) %>
     <hr>
   <% end %>
 <% else %>
