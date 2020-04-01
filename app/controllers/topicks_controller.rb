@@ -17,6 +17,8 @@ class TopicksController < ApplicationController
   end
 
   def about
+    @topicks = Topick.all
+    @customers = Customer.all
   end
 
   def index

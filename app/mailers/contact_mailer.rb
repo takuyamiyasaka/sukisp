@@ -11,4 +11,9 @@ class ContactMailer < ApplicationMailer
 		@inquiry = inquiry
 		mail to: customer.email,subject:"Sukisp お問い合わせ回答"
 	end
+
+	def send_no_login_admin_reply(inquiry)
+		@name = inquiry.inquiry_name
+		mail to: inquiry.inquiry_name, subject: "Sukisp お問い合わせありがとうございます。"
+	end
 end
