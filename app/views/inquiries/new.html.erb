@@ -4,15 +4,7 @@
 	<%= form_for(@inquiry) do |f| %>
 		<%= f.text_area :request ,:placeholder =>"問い合わせ内容を記述してください",size: "50x5" %><br>
 		<%= f.hidden_field :unsolved %>
-		<% if customer_signed_in? %>
 			<%= f.check_box :is_receive,{},true, false %><b>管理者からの回答メールを受け取る場合はチェックを入れて下さい</b>
-		<% else %>
-			<p>会員登録されている方は<%= link_to "こちらから",customer_session_path %>ログインして下さい。</p>
-			<p>会員でない方は以下のフォームに入力をお願いします。</p>
-				<p><%= f.text_field :inquiry_name, :placeholder =>"お名前" %></p>
-				<p><%= f.text_field :inquiry_email, :placeholder =>"メールアドレス" %></p>
-				<%= f.hidden_field :is_receive, :value => true %>
-			<% end %>
 		<p><%= f.submit "送信", class:"btn btn-info" %></p>
 	<% end %>
 </div>

@@ -1,6 +1,9 @@
 <footer class="text-center"style="background-color: #DB7307">
-				<p>
-				<%= link_to "お問い合わせ",new_inquiry_path ,:style=>"color:#000;"%></p>
+				<% if customer_signed_in? %>
+					<p><%= link_to "お問い合わせ",new_inquiry_path ,:style=>"color:#000;"%></p>
+				<% else %>
+					<p><%= link_to "お問い合わせ",new_gest_inquiry_path,:style=>"color:#000;" %></p>
+				<% end %>
 				<p>CopyRight SkiSp</p>
 				<%= link_to "Powered by News API","https://newsapi.org" %>
 </footer>
