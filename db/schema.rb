@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_090646) do
+ActiveRecord::Schema.define(version: 2020_04_04_101453) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(version: 2020_04_02_090646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_valid", default: true, null: false
+  end
+
+  create_table "gest_answers", force: :cascade do |t|
+    t.integer "gest_inquiry_id_id"
+    t.text "gest_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gest_inquiry_id_id"], name: "index_gest_answers_on_gest_inquiry_id_id"
   end
 
   create_table "gest_inquiries", force: :cascade do |t|
