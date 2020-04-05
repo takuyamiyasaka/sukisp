@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :inquiries ,only:[:show,:edit,:index,:update]
     resources :gest_inquiries, only:[:show,:edit,:update]
     resources :answers, only:[:create]
+    resources :gest_answers, only:[:create]
     resources :update_contacts ,only: [:create]
   end
   if Rails.env.development?

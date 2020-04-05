@@ -2,7 +2,7 @@ class Admins::GestInquiriesController < ApplicationController
 	 before_action :authenticate_admin!
 	def show
 		@gest_inquiry = GestInquiry.find(params[:id])
-		@answer = Answer.new
+		@gest_answer = GestAnswer.new
 	end
 
 	def update

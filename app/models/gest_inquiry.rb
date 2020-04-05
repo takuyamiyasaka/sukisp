@@ -1,5 +1,5 @@
 class GestInquiry < ApplicationRecord
-	has_one :answer
+	has_one :gest_answer
 
 	validates :gest_request, presence: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
