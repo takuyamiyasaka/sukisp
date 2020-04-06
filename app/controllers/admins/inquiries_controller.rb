@@ -13,6 +13,7 @@ class Admins::InquiriesController < ApplicationController
 
   def index
     @inquiries = Inquiry.all
+    @gest_inquiries = GestInquiry.all
   end
 
   def update

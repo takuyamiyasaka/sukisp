@@ -3,8 +3,8 @@
 	<p class="notice"><%= flash[:notice] %></p>
 	<%= form_for(@inquiry) do |f| %>
 		<%= f.text_area :request ,:placeholder =>"問い合わせ内容を記述してください",size: "50x5" %><br>
-		<%= f.check_box :is_receive,{},true, false %><b>管理者からの回答メールを受け取る場合はチェックを入れて下さい</b>
 		<%= f.hidden_field :unsolved %>
+			<%= f.check_box :is_receive,{},true, false %><b>管理者からの回答メールを受け取る場合はチェックを入れて下さい</b>
 		<p><%= f.submit "送信", class:"btn btn-info" %></p>
 	<% end %>
 </div>

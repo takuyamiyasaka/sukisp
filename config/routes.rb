@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'answers/new'
   end
-  get 'inquiries/new'
   devise_for :admins, controllers:{
   	sessions:       "admins/sessions",
   	passwords:      "admins/passwords",
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   resources :inquiries ,only: [:new, :create]
+  resources :gest_inquiries ,only: [:new, :create]
 
   resources :topicks do
     collection do
@@ -50,7 +50,9 @@ Rails.application.routes.draw do
     end
     resources :customers,only: [:index,:show,:edit,:update]
     resources :inquiries ,only:[:show,:edit,:index,:update]
+    resources :gest_inquiries, only:[:show,:edit,:update]
     resources :answers, only:[:create]
+    resources :gest_answers, only:[:create]
     resources :update_contacts ,only: [:create]
   end
   if Rails.env.development?

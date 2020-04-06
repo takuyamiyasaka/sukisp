@@ -5,7 +5,6 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    if customer_signed_in?
   	 @inquiry = Inquiry.new(inquiry_params)
   	 @inquiry.customer_id = current_customer.id
   	 if @inquiry.save
@@ -14,9 +13,6 @@ class InquiriesController < ApplicationController
       else
         redirect_to request.referer,notice:"問い合わせに失敗しました。"
   	 end
-    else
-      redirect_to topicks_path
-    end
   end
 
   private
@@ -24,4 +20,5 @@ class InquiriesController < ApplicationController
   def inquiry_params
   	params.require(:inquiry).permit(:request,:unsloved,:is_receive)
   end
+
 end

@@ -28,6 +28,23 @@
 				</td>
 			</tr>
 			<% end %>
+			<% @gest_inquiries.each do |gest_inquiry| %>
+				<tr>
+					<td>
+						<%= gest_inquiry.gest_name %>
+					</td>
+					<td>
+						<%= link_to gest_inquiry.gest_request,admins_gest_inquiry_path(gest_inquiry) %>
+					</td>
+					<td>
+						<% if gest_inquiry.unsolved == true %>
+							<p>未解決</p>
+						<% else %>
+							<p>解決</p>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
 		</tbody>
 	</table>
 </div>
