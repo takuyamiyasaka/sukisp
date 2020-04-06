@@ -1,13 +1,7 @@
 <h1>回答</h1>
 	<%= @gest_inquiry.gest_request %>
-<div class="inq-edit">
-	<%= form_for(@gest_inquiry,url:admins_gest_inquiry_path(@gest_inquiry),method: :put) do |e| %>
-	<%= e.radio_button :unsolved ,false %>
-	<%= label_tag :unsolved, "解決" %>
-	<%= e.radio_button :unsolved ,true %>
-	<%= label_tag :unsolved, "未解決" %>
-	<%= e.submit "変更" %>
-	<% end %>
+<div class="gest_inq">
+	<%= render "admins/gest_inquiries/gest_inq_edit",inquiry: @gest_inquiry %>
 </div>
 <%= form_for(@gest_answer,url:admins_gest_answers_path) do |f| %>
 	<%= f.text_area :gest_answer %>

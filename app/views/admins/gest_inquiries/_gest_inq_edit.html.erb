@@ -1,4 +1,4 @@
-<%= form_for(inquiry,url:admins_inquiry_path(inquiry),method: :put, remote: true) do |e| %>
+<%= form_for(inquiry,url:admins_gest_inquiry_path(inquiry),method: :put, remote: true) do |e| %>
 	<%= e.radio_button :unsolved ,false %>
 	<%= label_tag :unsolved, "解決" %>
 	<%= e.radio_button :unsolved ,true %>

@@ -10,11 +10,9 @@ class Admins::GestInquiriesController < ApplicationController
   		if params[:gest_inquiry][:unsolved] == "false"
   		 @gest_inquiry.unsolved = false
   		 @gest_inquiry.update(gest_inquiry_params)
-  		 redirect_to top_admins_topicks_path
   		else
   	   	 @gest_inquiry.unsolved = true
   	     @gest_inquiry.update(gest_inquiry_params)
-  	     redirect_to top_admins_topicks_path
   	  end
 	end
 
