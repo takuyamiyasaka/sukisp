@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :gest_answer do
-    gest_inquiry_id { nil }
-    gest_answer { "MyText" }
+    gest_answer { "gest_test" }
+
+    trait :no_gest_answer do
+    	gest_answer {}
+    end
   end
 end
