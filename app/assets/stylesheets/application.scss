@@ -23,6 +23,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "slick-theme";
+@import "slick";
 
 html{
 	min-height:100%;
@@ -93,6 +95,18 @@ footer {
 	background-size: cover;
 	background-position-y:80%;
 	margin-bottom:30px;
+}
+#container{
+	height:500px;
+}
+.image1 {
+	background-image: url("img/main1.jpg");
+}
+.image2 {
+	background-image: url("img/main2.jpg");
+}
+.image3 {
+	background-image: url("img/main3.jpg");
 }
 .news {
 	height: 300px;
