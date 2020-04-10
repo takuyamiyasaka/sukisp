@@ -4,18 +4,25 @@
     <title>Sukisp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!-- font-awesomeを使用 -->
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"%>
-     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+    <!-- slickを使用 -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!-- slickを使うための記述 -->
 
+    <!-- googl-fontsの使用 -->
      <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto+Mono|Simonetta&display=swap" rel="stylesheet">
+
      <link href="https://fonts.googleapis.com/css?family=Kosugi|Noto+Serif+JP&display=swap&subset=cyrillic,japanese" rel="stylesheet">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+
+     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- slick-javを使用 -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <!--   <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script> -->
   </head>
 
   <body>
