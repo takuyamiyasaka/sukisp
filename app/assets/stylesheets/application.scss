@@ -91,13 +91,23 @@ footer {
 .main-top {
 	height: 400px;
 	width:100%;
-	background-image: image-url("img/main1.jpg");
-	background-size: cover;
-	background-position-y:80%;
+	position: relative;
 	margin-bottom:30px;
 }
-#container{
-	height:500px;
+.main1 {
+	background-image: image-url("img/main1.jpg");
+}
+.main2 {
+	background-image: image-url("img/mv.jpg");
+	background-position:bottom;
+}
+.main3 {
+	background-image: image-url("img/road.jpg");
+}
+.main4 {
+	background-image:image-url("img/japan.jpg");
+	background-size: contain;
+	background-position:center;
 }
 .image1 {
 	background-image: url("img/main1.jpg");
@@ -107,6 +117,10 @@ footer {
 }
 .image3 {
 	background-image: url("img/main3.jpg");
+}
+.main-contents {
+	position:absolute;
+	z-index:1;
 }
 .news {
 	height: 300px;
