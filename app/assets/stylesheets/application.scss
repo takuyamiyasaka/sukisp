@@ -207,3 +207,87 @@ footer {
 .withdraw {
 	margin-top:80px;
 }
+
+
+/*調べる
+fixed,inline-block,transiton:all .4s border-box,relative,absolute,border-radius,nth-of-type,-webkit-transform:translateY(20px) rotate(-45deg);
+	transform: translateY(20px) rotate(-45deg);fon-weight:bold;
+	*/
+
+
+
+/*ハンバーガー*/
+#hm-icon{
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  z-index: 10;
+}
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .8s linear;
+  /*cssでのアニメーションをつける allは全て、4s変化の始まりから終わり,(option例 ease 開始時と終了時は緩やか,linear 一定に変化,ease-in開始時は緩やか終了に近づくほど速く変化,ease-out開始時は早く変化し、終了時にはゆっくりになる) transiton:all 3s 2s easeと設定すると2sは変化を遅らせてスタートさせることができる*/
+  box-sizing: border-box;
+  transform:
+}
+.menu-trigger:hover{
+	background-color:red;
+}
+.menu-trigger {
+  position: relative;
+  width: 50px;
+  height: 44px;
+}
+.menu-trigger span{
+	position: absolute;
+	left:0;
+	width:100%;
+	height:4px;
+	background-color:#000;
+	border-radius:10px;  /*div要素などの丸く出来る要素*/
+}
+.menu-trigger span:nth-of-type(1){
+	top:0;
+	/*nth-of-typeは指定したここではspanがspan要素の何番目という意味
+	  nth-of-child要素に関係なく何番目*/
+}
+.menu-trigger span:nth-of-type(2){
+	top:20px;
+}
+.menu-trigger span:nth-of-type(3){
+	bottom:0;
+}
+.menu-trigger.active span:nth-of-type(1){
+	-webkit-transform:translateY(20px) rotate(-45deg);
+	transform: translateY(20px) rotate(-45deg);
+	background-color: #fff;
+}
+.menu-trigger.active span:nth-of-type(2){
+	opacity:0;
+}
+.menu-trigger.active span:nth-of-type(3){
+	-webkit-transform:translateY(-20px) rotate(45deg);
+	transform:translateY(-20px) rotate(45deg);
+	/*translate 移動させるcssここではtranslateY Y軸に-20pxうごかす,rotateは回転角度
+	ほかのオプションskew 平行四辺形 perspective遠近効果rotateとセット,scale 尺度*/
+	background-color:#fff;
+}
+/*spメニュー*/
+#sp-menu{
+	position:fixed;
+	top:0;
+	left:0;
+	background:#000;
+	color:#fff;
+	width:100%;
+	display:none;
+	z-index:9;
+}
+#sp-menu li{
+	text-align:center;
+	margin-bottom:30px;
+	color:#fff;
+	text-decoration:none;
+	fon-weight:bold;/*太字*/
+}
