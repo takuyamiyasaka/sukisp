@@ -229,7 +229,6 @@ fixed,inline-block,transiton:all .4s border-box,relative,absolute,border-radius,
   transition: all .8s linear;
   /*cssでのアニメーションをつける allは全て、4s変化の始まりから終わり,(option例 ease 開始時と終了時は緩やか,linear 一定に変化,ease-in開始時は緩やか終了に近づくほど速く変化,ease-out開始時は早く変化し、終了時にはゆっくりになる) transiton:all 3s 2s easeと設定すると2sは変化を遅らせてスタートさせることができる*/
   box-sizing: border-box;
-  transform:
 }
 .menu-trigger:hover{
 	background-color:red;
@@ -261,7 +260,7 @@ fixed,inline-block,transiton:all .4s border-box,relative,absolute,border-radius,
 .menu-trigger.active span:nth-of-type(1){
 	-webkit-transform:translateY(20px) rotate(-45deg);
 	transform: translateY(20px) rotate(-45deg);
-	background-color: #fff;
+	background-color: #000;
 }
 .menu-trigger.active span:nth-of-type(2){
 	opacity:0;
@@ -271,14 +270,14 @@ fixed,inline-block,transiton:all .4s border-box,relative,absolute,border-radius,
 	transform:translateY(-20px) rotate(45deg);
 	/*translate 移動させるcssここではtranslateY Y軸に-20pxうごかす,rotateは回転角度
 	ほかのオプションskew 平行四辺形 perspective遠近効果rotateとセット,scale 尺度*/
-	background-color:#fff;
+	background-color:#000;
 }
 /*spメニュー*/
 #sp-menu{
 	position:fixed;
-	top:0;
+	top:60px;
 	left:0;
-	background:#000;
+	background:linear-gradient(#e0ffff,#f8f8ff);
 	color:#fff;
 	width:100%;
 	display:none;
@@ -286,8 +285,11 @@ fixed,inline-block,transiton:all .4s border-box,relative,absolute,border-radius,
 }
 #sp-menu li{
 	text-align:center;
-	margin-bottom:30px;
-	color:#fff;
-	text-decoration:none;
-	fon-weight:bold;/*太字*/
+	margin:30px 0;
+	list-style: none;
+
+}
+#sp-menu a{
+	color:#000;
+	font-weight:bold;/*太字*/
 }
