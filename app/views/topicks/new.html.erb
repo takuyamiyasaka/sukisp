@@ -12,15 +12,15 @@
 			<%end%></ul>
 	<%= form_for @topick, url: topicks_path  do |f|  %>
 		<div class="field">
-			<%= f.label :ジャンル%><br>
+			<span class="topick_lavel"><%= f.label :ジャンル %></span><br>
 			<%= f.collection_select(:genre_id, Genre.where(is_valid: true), :id, :genre_name) %>
 		</div>
 		<div class="field">
-			<%= f.label :話題名 %><br>
-			<%= f.text_field :topick_name %>
+			<span class="topick_lavel"><%= f.label :話題名 %></span><br>
+			<%= f.text_field :topick_name,size: "48x1" %>
 		</div>
 		<div class="field">
-			<%=f.label :内容 %><br>
+			<span class="topick_lavel"><%=f.label :内容 %></span><br>
 			<%= f.text_area :introduction ,size:"50x5"%>
 		</div>
 		<div class="field">
@@ -30,6 +30,6 @@
 			<%= f.submit "登録" %>
 		</div>
 		<% end %>
-</div>
+	</div>
 </div>
 
