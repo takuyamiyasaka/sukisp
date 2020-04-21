@@ -10,7 +10,7 @@
 				<li><%= message %></li>
 				<%end%>
 			<%end%></ul>
-	<%= form_for @topick, url: topicks_path  do |f|  %>
+	<%= form_for @topick, url: topick_path  do |f|  %>
 		<div class="field">
 			<span class="topick_lavel"><%= f.label :ジャンル %></span><br>
 			<%= f.collection_select(:genre_id, Genre.where(is_valid: true), :id, :genre_name) %>

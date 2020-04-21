@@ -10,10 +10,11 @@
 <div class="col-xs-12">
 	<div class="row">
 <% @topicks.each do |topicks| %>
-	<div class="col-xs-6">
+	<div class="col-sm-6">
 	<div class="topick-box">
 		<% topicks.topick_images.first(1).each do |image| %><br>
-			<%= attachment_image_tag image , :topick_image, :fill,560,150, class: "pull-left profile-thumb",fallback:"no_image.png" %><br>
+			<div class="hidden-sm"><%= attachment_image_tag image , :topick_image, :fill,560,150, class: "pull-left profile-thumb",fallback:"no_image.png" %></div>
+			<div class="visible-sm"><%= attachment_image_tag image , :topick_image, :fill,330,100, class: "pull-left profile-thumb",fallback:"no_image.png" %></div>
 		<% end %><br>
 		<span class="genre-mini" style="background-color: #7fffd4 "><%= topicks.genre.genre_name %></span>
 		<span>投稿者  <%=link_to topicks.customer.public_name,customer_path(topicks.customer) %></span><br>
