@@ -20,13 +20,13 @@
 					<li><%= link_to "会員一覧",admins_customers_path %></li>
 					<li><%= link_to "ログアウト",destroy_admin_session_path,method: :delete %></li>
 				<%elsif customer_signed_in? %>
-					<li><a><%= link_to "ジャンル", genres_path %></a></li>
+					<li><%= link_to "ジャンル", genres_path %></li>
 					<li><%= link_to "話題", topicks_path %></li>
 					<li><%= link_to "マイページ", current_customer %></li>
 					<li><%= link_to "ログアウト",destroy_customer_session_path, method: :delete %>
 					</li>
 					<% else %>
-					<li><a><%= link_to "ジャンル", genres_path %></a>
+					<li><%= link_to "ジャンル", genres_path %>
 					</li>
 					<li><%= link_to "話題", topicks_path %>
 					</li>
@@ -48,7 +48,7 @@
   		<nav>
 				<ul class="toph4 nav navb-tabs nav-justified hidden-xs">
 				<% if admin_signed_in? %>
-					<li><%= link_to "ジャンル一覧", admins_genres_path %></li>
+					<li ><%= link_to "ジャンル一覧", admins_genres_path %></li>
 					<li><%= link_to "話題一覧", admins_topicks_path %></li>
 					<li><%= link_to "会員一覧",admins_customers_path %></li>
 					<li><%= link_to "ログアウト",destroy_admin_session_path,method: :delete %></li>
