@@ -88,6 +88,17 @@ footer {
   background-position: center;
 }
 
+//header
+.menu-trigger:hover{
+	background-color:red;
+}
+header a:hover{
+	transition: all .4s ease-in;
+	font-size:15px;
+}
+
+//topページ
+
 .main-top {
 	height: 400px;
 	width:100%;
@@ -109,15 +120,6 @@ footer {
 	background-size: contain;
 	background-position:center;
 }
-.image1 {
-	background-image: url("img/main1.jpg");
-}
-.image2 {
-	background-image: url("img/main2.jpg");
-}
-.image3 {
-	background-image: url("img/main3.jpg");
-}
 .main-contents {
 	position:absolute;
 	z-index:20;
@@ -127,11 +129,6 @@ footer {
 	width: 100%;
 	border:2px solid #7fffd4;
 }
-.about-image {
-	background-image: image-url("img/lake.jpg");
-	background-size:cover;
-}
-
 .news-line {
 	background-image: image-url("img/main2.jfif");
 	background-size:cover;
@@ -191,6 +188,15 @@ footer {
 	width: 40px;
 	padding:0 5px 0;
 }
+
+//アバウトページ
+
+.about-image {
+	background-image: image-url("img/lake.jpg");
+	background-size:cover;
+}
+
+//showページ
 
 .comment-box {
 	border:1px solid #000;
