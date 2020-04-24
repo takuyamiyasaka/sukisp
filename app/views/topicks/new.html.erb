@@ -24,7 +24,10 @@
 			<%= f.text_area :introduction ,size:"50x5"%>
 		</div>
 		<div class="field">
-				<%= f.attachment_field :topick_images_topick_images, multiple: true %>
+			<%= image_tag "no image.png" ,id: :file_prevew, size:"250x150"%>
+		</div>
+		<div class="field">
+				<%= f.attachment_field :topick_images_topick_images, multiple: true,id: :file_sample %>
 			</div>
 			<div class="text-center">
 			<%= f.submit "登録" %>

@@ -101,3 +101,24 @@ $(function(){
             return false;
       });
 });
+$(function(){
+      function readURL(input){
+            if (input.files && input.files[0]){
+                  var reader = new FileReader();
+                  //html5世代のユーザーのＰＣ内にあるファイルやバッファ上(バッファとは一時的に保存)
+                  //のデータに対して読み取りとアクセスが出来る
+                  reader.onload = function (e){
+                        $("#file_prevew").attr("src",e.target.result);
+                        //attrメソッドは引数が一つのときは取得、
+                        //２つ引数がある場合は2つ目の引数が変更させる値
+                  }
+                  reader.readAsDataURL(input.files[0]);
+                  //(input.files[0])のdataURLScheme文字列を取得する
+                  }
+            }
+            $("#file_sample").change(function(){
+                  readURL(this);
+            });
+});
+// prop,メソッド要素の取得の使い方だが、状態をtrue,falseで押してくれる、あるか、ないかなど
+//
