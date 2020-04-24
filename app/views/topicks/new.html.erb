@@ -24,7 +24,7 @@
 			<%= f.text_area :introduction ,size:"50x5"%>
 		</div>
 		<div class="field">
-			<img id="file-preview" src="/imges/no image.png" style="width:200px">
+			<%= image_tag "no image.png" ,id: :file_prevew, size:"250x150"%>
 		</div>
 		<div class="field">
 				<%= f.attachment_field :topick_images_topick_images, multiple: true,id: :file_sample %>
