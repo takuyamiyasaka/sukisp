@@ -101,3 +101,17 @@ $(function(){
             return false;
       });
 });
+$(function(){
+      function readURL(input){
+            if (input.topick_images && input.topick_images[0]){
+                  var reader = new FileReader();
+                  reader.onload = function (e){
+                        $("#file-prevew").attr("src",e.taget.result);
+                  }
+                  reader.readAsDataURL(input.files[0]);
+                  }
+            }
+            $("#file_sample").change(function(){
+                  readURL(this);
+            });
+});
