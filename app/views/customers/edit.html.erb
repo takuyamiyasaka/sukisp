@@ -28,8 +28,11 @@
 			<span class="topick_lavel"><%=f.label :自己紹介 %></span><br>
 			<%= f.text_area :self_introduction ,size:"50x5"%>
 		</div>
+		<div>
+			<%= image_tag "no_image.jpg" ,size:"200x150" ,id: :file_prevew %>
+		</div>
 		<div class="field">
-				<%= f.attachment_field :profile_image %>
+				<%= f.attachment_field :profile_image ,id: :file_sample %>
 			</div>
 			<div class="text-center">
 			<%= f.submit "更新" %>

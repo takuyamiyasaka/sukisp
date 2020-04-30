@@ -17,6 +17,10 @@ FactoryBot.define do
       public_name {}
     end
 
+    trait :profile_image do
+      profile_image_id {Rack::Test::UploaderFile.new(File.join(Rails.root,"img/airport.jpg"),"imge/jpg")}
+    end
+
      trait :create_with_topicks do
        after(:create) do |customer|
          create_list(:topick, 3, customer: customer, genre: genre)
