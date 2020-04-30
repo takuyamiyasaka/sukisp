@@ -69,6 +69,16 @@ RSpec.feature "Topickに関するテスト",type: :feature do
 				expect(page).to have_current_path topick_path(@topick1)
 			end
 		end
+		feature "コメントの追加" do
+			before do
+				visit topick_path(@topick1)
+				find_field("comment[comment]").set("new_comment")
+			end
+			scenario "コメントがあるか" do
+				expect {
+					find("input[name='commit']").click }.to change(@topick1.comments,:count).by(1)
+			end
+		end
 	end
 end
 	#"話題の詳細ページ"
