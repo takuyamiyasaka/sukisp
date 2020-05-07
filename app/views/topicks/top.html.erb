@@ -21,7 +21,7 @@
 				<p style="text-decoration: underline">運営からのお知らせ</p>
 				<table class="table"style="overflow-y: auto ">
 					<% @contacts.each do |contact| %>
-					<tr>
+					<tr >
 						<td>
 						<%= contact.created_at.to_s(:datetime_jp) %>
 						</td>
@@ -63,6 +63,9 @@
 	<div class="main text-center">
 		<span class="main-font"><%= link_to "話題を投稿しましょう",new_topick_path ,:style => "color:red;"%></span>
 	</div>
+	<marquee behavior="scroll">
+		こんにちは
+	</marquee>
 </div>
 
 <div class="text-center news-line" >
