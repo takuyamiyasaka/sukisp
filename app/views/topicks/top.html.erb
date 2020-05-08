@@ -38,9 +38,10 @@
 		<div class="topick-box col-xs-10 col-xs-offset-1">
 			<div class="day-topiick  ">
 				<div class=" text-center panel-header" style="font-size: 20px;">最近の話題</div>
+				<% @recently_topicks.first(5).each do |recently| %>
+				<%= link_to topick_path(recently),:style =>"color:#000" do %>
 				<table class="table table-hover" style="overflow-y: auto ">
 					<tbody>
-						<% @recently_topicks.first(5).each do |recently| %>
 						<tr>
 							<td class="col-xs-3">
 								<%= recently.created_at.to_s(:datetime_jp) %>
@@ -49,12 +50,13 @@
 								<%= recently.genre.genre_name %>
 							</td>
 							<td class="col-xs-7">
-								<span style="text-decoration: underline;"><%= link_to recently.topick_name, topick_path(recently) ,:style =>"color:#000" %></span>
+								<span style="text-decoration: underline;"><%= recently.topick_name %></span>
 							</td>
 						</tr>
-						<% end %>
 					</tbody>
 				</table>
+				<% end %>
+				<% end %>
 				<%= link_to "その他の話題はこちらへ",topicks_path %>
 			</div>
 		</div>
