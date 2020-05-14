@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   root to: "topicks#top"
 
 
-  resources :customers  ,only:[:show,:edit,:update,:destroy] do
+  resources :customers  ,controllers: {omniauth_callbacks: "customers/omniauth_callbacks"},only:[:show,:edit,:update,:destroy] do
       member do
         get "follow"
         get "follower"
