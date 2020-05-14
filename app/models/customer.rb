@@ -2,7 +2,7 @@ class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,:omniauthable
 
   acts_as_paranoid
 
@@ -33,6 +33,23 @@ class Customer < ApplicationRecord
 
   def following?(other_customer)
   	self.followings.include?(other_customer)
+  end
+
+  def self.find_for_oauth(auth)
+    user = Customer.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = Customer.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        name:  auth.info.name,
+        password: Devise.friendly_token[0, 20],
+        image:  auth.info.image
+      )
+    end
+
+    user
   end
 
 end

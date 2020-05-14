@@ -23,5 +23,14 @@
     <%= f.submit "ログイン" %>
   </div>
 <% end %>
+<div class="btn btn-success">
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to omniauth_authorize_path(resource_name, provider)  do %>
+      <span class="fab fa-facebook-f"></span><%= "Facebookでログイン"%><br />
+    <% end %>
+    <% end %>
+  <% end %>
+</div></br>
 
 <%= render "customers/shared/links" %>
