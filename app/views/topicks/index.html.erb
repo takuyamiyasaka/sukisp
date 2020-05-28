@@ -1,10 +1,15 @@
 <div class="text-center topick-index">
 	<h1 style="color: #01b8be">話題一覧</h1>
 	<div class="text-right">
-	<p>現在の話題は<%= @topicks.count %>です。</p>
+		<p>現在の話題は<%= @topicks.count %>です。</p>
+	</div>
+	<div class="find">
+		<%= search_form_for @search do |f|%>
+		<%= f.search_field :topick_name_cont %>
+		<%= f.submit "検索" %>
+		<%end%>
+	</div>
 </div>
-</div>
-
 
 <%= link_to "新規話題投稿", new_topick_path %>
 <div class="col-xs-12">
@@ -30,4 +35,3 @@
 </div>
 <div>
 </div>
-

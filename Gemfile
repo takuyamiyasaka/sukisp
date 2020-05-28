@@ -83,6 +83,7 @@ gem 'letter_opener_web'
 gem "kaminari", "~>1.1.1"
 gem "pry-rails"
 gem "omniauth-facebook"
+gem "ransack"
 
 
 group :production do
