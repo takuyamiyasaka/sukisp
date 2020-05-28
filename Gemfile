@@ -80,7 +80,7 @@ gem "dotenv-rails"
 gem "impressionist"
 gem 'letter_opener'
 gem 'letter_opener_web'
-gem "kaminari", "~>1.1.1"
+gem "kaminari", "~>1.2.1"
 gem "pry-rails"
 gem "omniauth-facebook"
 gem "ransack"
