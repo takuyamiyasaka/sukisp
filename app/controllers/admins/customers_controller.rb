@@ -2,7 +2,8 @@ class Admins::CustomersController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@customers = Customer.with_deleted
+		@q=Customer.ransack(params[:q])
+		@customers = @q.result.with_deleted
 	end
 
 	def show

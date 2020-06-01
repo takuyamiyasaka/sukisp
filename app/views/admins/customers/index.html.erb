@@ -2,8 +2,8 @@
 <table class="table table-bordered text-center">
 	<thead>
 		<tr class="text-center">
-			<th class="text-center">ID</th>
-			<th class="text-center">会員名</th>
+			<th class="text-center"><%=sort_link(@q,:id,"ID",hide_indicator:true) %></th>
+			<th class="text-center"><%= sort_link(@q,:name,"会員名",hide_indicator:true) %></th>
 			<th class="text-center">ステータス</th>
 			<th></th>
 		</tr>

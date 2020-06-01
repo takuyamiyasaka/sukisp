@@ -5,12 +5,11 @@
 	</div>
 	<div class="find">
 		<%= search_form_for @search do |f|%>
-		<%= f.search_field :topick_name_cont %>
+		<%= f.search_field :topick_name_or_customers_public_name_cont %>
 		<%= f.submit "検索" %>
 		<%end%>
 	</div>
 </div>
-
 <%= link_to "新規話題投稿", new_topick_path %>
 <div class="col-xs-12">
 	<div class="row">
