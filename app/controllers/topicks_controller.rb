@@ -31,7 +31,7 @@ class TopicksController < ApplicationController
     else
        @topicks = Topick.page(params[:page])
     end
-    @search= Topick.ransack(params[:q])
+    @search= Topick.includes(:customers).ransack(params[:q])
     @topicks = @search.result(distinct: true).page(params[:page])
   end
 
